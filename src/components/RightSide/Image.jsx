@@ -4,7 +4,7 @@ export default function Image() {
 			<img
 				src="/images/image.jpg"
 				alt="image"
-				className="w-[540px] hidden md:block rounded-r-xl"
+				className="w-[540px] h-full hidden md:block rounded-r-xl"
 			/>
 		</div>
 	);
