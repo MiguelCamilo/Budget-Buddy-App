@@ -24,7 +24,7 @@ export default function LoginCard() {
 				{/* content */}
 				<h2 className="mb-5 text-4xl font-bold text-center">Log In</h2>
 				<p className="max-w-sm mb-12 font-sans font-light text-gray-600 text-center ml-10">
-					Log into your account to view your expenses
+					Log in to view your account
 				</p>
 				<input
 					type="text"
@@ -38,19 +38,17 @@ export default function LoginCard() {
 				/>
 
 				{/* middle container */}
-				<div className="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
-					<button cursor="pointer">
-						<p className="text-cyan-800 font-light">Dont' have an account?</p>
-						<Link to='/signup' className="font-bold text-lg text-cyan-800">
-							Sign Up
-						</Link>
-					</button>
+				<div className="flex flex-col items-center justify-between my-8 space-y-2 md:space-y-0">
+					<p className="text-cyan-800 font-light">Dont' have an account?</p>
+					<Link to="/signup" className="font-bold text-lg text-cyan-800">
+						Sign Up
+					</Link>
+				</div>
 
-					{/* next btn  */}
-					<button className="w-full md:w-auto flex justify-center items-center p-6 space-x-4 font-sans text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-slate-300 hover:bg-opacity-90 hover:shadow-2xl border transition hover:-translate-y-0.5 duration-150">
+				{/* next btn  */}
+				<button className="w-full flex justify-center items-center p-6 space-x-4 font-sans text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-slate-300 hover:bg-opacity-90 hover:shadow-2xl border transition hover:-translate-y-0.5 duration-150">
 						<span>{arrow}</span>
 					</button>
-				</div>
 
 				{/* Border */}
 				<div className="mt-16 border-b border-gray-300"></div>
@@ -62,12 +60,7 @@ export default function LoginCard() {
 
 				{/* bottom buttons container */}
 				<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
-					<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 md:w-1/2 bg-blue-600 text-white font-normal">
-						<img src="/images/facebook.png" alt="" className="w-9" />
-						<span className="font-normal">Facebook</span>
-					</button>
-
-					<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 md:w-1/2 font-normal">
+					<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal">
 						<img src="/images/google.png" alt="" className="w-9" />
 						<span className="font-normal">Google</span>
 					</button>

@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginCard from "./components/LoginCard/LoginCard";
 import SignUpCard from "./components/SignupCard/SignupCard";
+import Welcome from "./routes/Welcome";
 import "./assets/App.css";
 
 export const AuthContext = createContext(null);
@@ -18,6 +19,7 @@ function App() {
 						<Routes>
 							<Route path="/login" element={<LoginCard />} />
 							<Route path="/signup" element={<SignUpCard />} />
+							<Route path="/" element={<Welcome />} />
 						</Routes>
 					</div>
 				</div>

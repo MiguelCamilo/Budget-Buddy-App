@@ -39,11 +39,6 @@ export default function LoginCard() {
 
 				{/* middle container */}
 				<div className="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
-					{/* <button cursor="pointer">
-						<a href="#" className="font-bold text-cyan-800">
-							Forgot Password
-						</a>
-					</button> */}
 
 					{/* next btn  */}
 					<button className="w-full flex justify-center items-center p-6 space-x-4 font-sans text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-slate-300 hover:bg-opacity-90 hover:shadow-2xl border transition hover:-translate-y-0.5 duration-150">
@@ -62,7 +57,7 @@ export default function LoginCard() {
 				{/* bottom buttons container */}
 				<Link to='/login' className="font-normal">
 				<div className="flex flex-col space-x-0 space-y-6">
-				<button className="flex items-center justify-center py-2 px-4 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 bg-blue-600 text-white font-normal">
+				<button className="flex items-center justify-center py-2 px-4 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 bg-cyan-600 text-white font-normal">
 						{/* <img src="/images/facebook.png" alt="" className="w-9" /> */}
 						Login
 					</button>
