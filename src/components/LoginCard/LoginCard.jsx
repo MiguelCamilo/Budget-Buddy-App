@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const arrow = (
 	<svg
@@ -41,9 +41,9 @@ export default function LoginCard() {
 				{/* middle container */}
 				<div className="flex flex-col items-center justify-between my-8 space-y-2 md:space-y-0">
 					<p className="text-cyan-800 font-light">Dont' have an account?</p>
-					<a to="/signup" className="font-bold text-lg text-cyan-800">
+					<Link to="/signup" className="font-bold text-lg text-cyan-800">
 						Sign Up
-					</a>
+					</Link>
 				</div>
 
 				{/* next btn  */}

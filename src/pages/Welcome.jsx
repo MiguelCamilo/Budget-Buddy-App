@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function Welcome() {
@@ -14,31 +15,31 @@ export default function Welcome() {
 						{/* border */}
 						<div className="mt-10 border-b border-2 border-gray-300"></div>
 
-						<a to="/login" className="font-normal mt-10">
+						<Link to="/login" className="font-normal mt-10">
 							<div className="flex flex-col space-x-0 space-y-6">
 								<button className="flex items-center justify-center py-2 px-4 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 bg-cyan-600 text-white font-normal">
 									{/* <img src="/images/facebook.png" alt="" className="w-9" /> */}
 									Login
 								</button>
 							</div>
-						</a>
+						</Link>
 								<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
-									<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal mt-5">
+									{/* <button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal mt-5">
 										<img src="/images/google.png" alt="" className="w-9" />
 										<span className="font-normal">Google</span>
-									</button>
+									</button> */}
 								</div>
 
 								<div className="flex flex-col items-center justify-between my-8 space-y-2 md:space-y-0">
 									<p className="text-cyan-800 font-light">
 										Dont' have an account?
 									</p>
-									<a
-										to="/dashboard"
+									<Link
+										to="/signup"
 										className="font-bold text-lg text-cyan-800"
 									>
 										Sign Up
-									</a>
+									</Link>
 								</div>
 							</div>
 					</div>

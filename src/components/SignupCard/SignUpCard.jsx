@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const arrow = (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -53,14 +55,14 @@ export default function LoginCard() {
 					</p>
 
 					{/* bottom buttons container */}
-					<a to="/login" className="font-normal">
+					<Link to="/login" className="font-normal">
 						<div className="flex flex-col space-x-0 space-y-6">
 							<button className="flex items-center justify-center py-2 px-4 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 bg-cyan-600 text-white font-normal">
 								{/* <img src="/images/facebook.png" alt="" className="w-9" /> */}
 								Login
 							</button>
 						</div>
-					</a>
+					</Link>
 				</div>
 				<div>
 					{/* side image */}
