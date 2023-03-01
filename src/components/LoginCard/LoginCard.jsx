@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 
 const arrow = (
 	<svg
@@ -19,7 +19,8 @@ const arrow = (
 
 export default function LoginCard() {
 	return (
-		<>
+		<div className="flex items-center justify-center h-screen w-screen bg-[#e0ffee]">
+			<div className="relative flex flex-col m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
 			<div className="p-6 md:p-20">
 				{/* content */}
 				<h2 className="mb-5 text-4xl font-bold text-center">Log In</h2>
@@ -40,15 +41,15 @@ export default function LoginCard() {
 				{/* middle container */}
 				<div className="flex flex-col items-center justify-between my-8 space-y-2 md:space-y-0">
 					<p className="text-cyan-800 font-light">Dont' have an account?</p>
-					<Link to="/signup" className="font-bold text-lg text-cyan-800">
+					<a to="/signup" className="font-bold text-lg text-cyan-800">
 						Sign Up
-					</Link>
+					</a>
 				</div>
 
 				{/* next btn  */}
 				<button className="w-full flex justify-center items-center p-6 space-x-4 font-sans text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-slate-300 hover:bg-opacity-90 hover:shadow-2xl border transition hover:-translate-y-0.5 duration-150">
-						<span>{arrow}</span>
-					</button>
+					<span>{arrow}</span>
+				</button>
 
 				{/* Border */}
 				<div className="mt-16 border-b border-gray-300"></div>
@@ -59,12 +60,14 @@ export default function LoginCard() {
 				</p>
 
 				{/* bottom buttons container */}
-				<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
-					<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal">
-						<img src="/images/google.png" alt="" className="w-9" />
-						<span className="font-normal">Google</span>
-					</button>
-				</div>
+				<a>
+					<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
+						<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal">
+							<img src="/images/google.png" alt="" className="w-9" />
+							<span className="font-normal">Google</span>
+						</button>
+					</div>
+				</a>
 			</div>
 			<div>
 				{/* side image */}
@@ -74,6 +77,7 @@ export default function LoginCard() {
 					className="w-[540px] h-full hidden md:block rounded-r-xl"
 				/>
 			</div>
-		</>
+			</div>
+		</div>
 	);
 }

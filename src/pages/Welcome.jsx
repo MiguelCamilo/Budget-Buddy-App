@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 
 export default function Welcome() {
 	return (
@@ -14,15 +14,16 @@ export default function Welcome() {
 						{/* border */}
 						<div className="mt-10 border-b border-2 border-gray-300"></div>
 
-						<Link to="/login" className="font-normal mt-10">
+						<a to="/login" className="font-normal mt-10">
 							<div className="flex flex-col space-x-0 space-y-6">
 								<button className="flex items-center justify-center py-2 px-4 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 bg-cyan-600 text-white font-normal">
 									{/* <img src="/images/facebook.png" alt="" className="w-9" /> */}
 									Login
 								</button>
-
+							</div>
+						</a>
 								<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
-									<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal">
+									<button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal mt-5">
 										<img src="/images/google.png" alt="" className="w-9" />
 										<span className="font-normal">Google</span>
 									</button>
@@ -32,18 +33,16 @@ export default function Welcome() {
 									<p className="text-cyan-800 font-light">
 										Dont' have an account?
 									</p>
-									<Link
-										to="/signup"
+									<a
+										to="/dashboard"
 										className="font-bold text-lg text-cyan-800"
 									>
 										Sign Up
-									</Link>
+									</a>
 								</div>
 							</div>
-						</Link>
 					</div>
 				</div>
-			</div>
 		</>
 	);
 }
