@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import ExpenseFormList from "../ExpenseFormList/ExpenseFormList";
+import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import IncomeForm from "../IncomeForm/IncomeForm";
 
 export default function Dashboard() {
