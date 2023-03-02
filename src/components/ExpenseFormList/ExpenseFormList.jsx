@@ -7,3 +7,4 @@ export default function ExpenseFormList({ date, title, amount }) {
 		</div>
 	);
 }
+
