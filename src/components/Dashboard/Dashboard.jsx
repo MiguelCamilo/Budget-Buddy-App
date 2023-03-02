@@ -4,6 +4,9 @@ import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 
 export default function Dashboard() {
 	const [expenses, setExpenses] = useState();
+	const [date, setDate] = useState();
+	const [title, setTitle] = useState();
+	// const []
 
 	useEffect(() => {
 		fetch(`http://localhost:3030/expenses`)
