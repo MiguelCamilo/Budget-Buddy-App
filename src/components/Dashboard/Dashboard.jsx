@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import ExpenseForm from "../ExpenseForm/ExpenseForm";
-import IncomeForm from "../IncomeForm/IncomeForm";
+import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 
 export default function Dashboard() {
 	const [expenses, setExpenses] = useState();
 
-	// useEffect(() => {
-	// 	fetch(`http://localhost:3030/expenses`)
-	// 		.then((res) => res.json())
-	// 		.then(setExpenses)
-	// 		.catch((err) => console.log(err));
-	// }, []);
+	useEffect(() => {
+		fetch(`http://localhost:3030/expenses`)
+			.then((res) => res.json())
+			.then(setExpenses)
+			.catch((err) => console.log(err));
+	}, []);
 
 	return (
 		<section className="flex  overflow-hidden bg-[#13e372]">
@@ -20,41 +19,77 @@ export default function Dashboard() {
 				<div className="pt-6 px-4">
 					<div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 content-end">
 						{/* expense form */}
-						<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-							<div className="mb-4 flex items-center justify-between">
-								<div>
-								
-								</div>
-								<div className="flex-shrink-0">
-
-								</div>
-							</div>
-							<div className="flex flex-col mt-8">
-								<div className="overflow-x-auto rounded-lg">
-									<div className="align-middle inline-block min-w-full">
-										<div className="shadow overflow-hidden sm:rounded-lg">
-
-										</div>
+						<form action="">
+							<div className="bg-[#f4f5f6] shadow rounded-lg p-4 sm:p-6 xl:p-8">
+								<div className="mb-4 flex items-center justify-between">
+									<div>
+										<h2>Expenses</h2>
+									</div>
+									<div className="flex-shrink-0">
+										{/* form input */}
+										<label htmlFor="date">Date</label>
+										<input
+											type="date"
+											className="rounded-md border-2 border-black ml-1 text-center"
+											// value={}
+											// onChange={}
+										/>
 									</div>
 								</div>
-							</div>
-						</div>
-						{/* income form */}
-						<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-							<div className="mb-4 flex items-center justify-between">
-								<div>
-								
-								</div>
-								<div className="flex-shrink-0">
+								<div className="flex flex-col mt-8">
+									<div className="overflow-x-auto rounded-lg">
+										<div className="align-middle inline-block min-w-full">
+											<div className="shadow overflow-hidden sm:rounded-lg space-x-5 flex justify-center">
+												{/* form inputs */}
+												<label htmlFor="title">Title</label>
+												<input
+													type="text"
+													placeholder="Title"
+													className="rounded-md border-2 border-black text-center"
+													// value={}
+													// onChange={}
+												/>
 
+												<label htmlFor="amount">Amount</label>
+												<input
+													type="text"
+													placeholder="Amount"
+													className="rounded-md border-2 border-black text-center"
+													// value={}
+													// onChange={}
+												/>
+												<button className="bg-[#13e372] p-2 rounded-lg">Click</button>
+											</div>
+										</div>
+									</div>
+
+									{/* ExpenseFormList comp here */}
+									{!expenses ? (
+										<p className="text-center mt-2">Loading...</p>
+									) : (
+										expenses.map((expense) => (
+											<ExpenseFormList
+												key={expense._id}
+												date={expense.date}
+												title={expense.title}
+												amount={expense.amount}
+											/>
+										))
+									)}
 								</div>
+							</div>
+						</form>
+
+						{/* income form */}
+						<div className="bg-[#f4f5f6] shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+							<div className="mb-4 flex items-center justify-between">
+								<div></div>
+								<div className="flex-shrink-0"></div>
 							</div>
 							<div className="flex flex-col mt-8">
 								<div className="overflow-x-auto rounded-lg">
 									<div className="align-middle inline-block min-w-full">
-										<div className="shadow overflow-hidden sm:rounded-lg">
-
-										</div>
+										<div className="shadow overflow-hidden sm:rounded-lg"></div>
 									</div>
 								</div>
 							</div>
@@ -94,18 +129,6 @@ export default function Dashboard() {
 		placeholder="Amount"
 		className="rounded-lg p-1"
 	/>
-	{!expenses ? (
-		<p>Loading...</p>
-	) : (
-		expenses.map((expense) => (
-			<ExpenseFormList
-				key={expense.id}
-				date={expense.date}
-				title={expense.title}
-				amount={expense.amount}
-			/>
-		))
-	)}
 </div>
 </form> */
 }
