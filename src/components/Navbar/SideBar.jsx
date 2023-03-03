@@ -5,15 +5,26 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FiMessageSquare } from "react-icons/fi";
 
 
-export default function Navbar() {
+export default function SideBar() {
 
 	return (
 		<>
-			<aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-2xl">
-				<a href="#">
-					{/* PLACE BUDGET BUDDY LOGO HERE */}
-				</a>
-				<div className="flex flex-col justify-between flex-1 mt-6">
+			<aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-2xl space-y-10">
+			{/* BUDGET BUDDY LOGO */}
+			<div className="flex flex-col items-center mt-6 -mx-2">
+				<img
+					className="object-cover w-24 h-20 mx-2 rounded-full"
+					src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+					alt="avatar"
+				/>
+				<h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200">
+					Miguel Camilo
+				</h4>
+				<p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400">
+					miguel@email.com
+				</p>
+			</div>
+				<div className="flex flex-col justify-between flex-1 mt-10 ">
 					<nav className="-mx-3 space-y-6">
 						<div className="space-y-3 ">
 							<label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">

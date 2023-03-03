@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
+import SideBar from "../Navbar/SideBar";
 import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 import "./dashboard.css";
 
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
 	return (
 		<section className="flex overflow-hidden bg-[#2e3647]">
-			<Navbar />
+			<SideBar />
 			{/* form containers */}
 			<div className="flex-grow container px-6 py-10 color-gr rounded-3xl mx-5 my-5">
 				<section className="text-gray-400 bg-gray-900 body-font rounded-2xl">
