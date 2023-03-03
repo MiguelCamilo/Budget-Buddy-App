@@ -1,19 +1,16 @@
 export default function ExpenseFormList({ date, title, amount }) {
-	
-	const dateObj = new Date(date)
-	const month = dateObj.getMonth() + 1
-	const year = dateObj.getFullYear()
-	const day = dateObj.getDate() + 1
-
-	// delete form
-	
+	// const dateObj = new Date();
+	// const month = dateObj.getMonth() + 1;
+	// const year = dateObj.getFullYear();
+	// const day = dateObj.getDate() + 1;
 
 	return (
-		<div className="flex flex-col md:flex-row justify-between mt-3 ">
-			<p>{month}-{day}-{year}</p>
-			<p>{title}</p>
-			<p>{amount}</p>
+		<div className="flex selection:flex-row justify-between mt-3 text-purple-400 border-2 border-white p-3 rounded-lg">
+			{/* <p>
+				{dateObj}
+			</p> */}
+			<p className="capitalize">{title}</p>
+			<p>{`$${amount}`}</p>
 		</div>
 	);
 }
-

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
+import "./dashboard.css";
 
 export default function Dashboard() {
 	const [expenses, setExpenses] = useState();
@@ -10,33 +11,39 @@ export default function Dashboard() {
 	const [date, setDate] = useState("");
 
 	const handleAddExpense = (e) => {
-		e.preventDefault()
+		e.preventDefault();
+
+		if (!title && !amount && !date) {
+			return alert("Expense's must be filled in.");
+		}
 
 		const newExpense = {
 			date: date,
 			title: title,
 			amount: amount,
-		}
-		
+		};
+
 		fetch(`http://localhost:3030/expenses`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(newExpense)
+			body: JSON.stringify(newExpense),
 		})
-		.then(res => res.json())
-		.then(setExpenses)
-		.catch(err => {
-			console.error(err)
-			alert(err.message)
-		})
-
-	}
+			.then((res) => res.json())
+			.then(setExpenses)
+			.catch((err) => {
+				console.error(err);
+				alert(err.message);
+			});
+		setTitle("");
+		setAmount("");
+		setDate("");
+	};
 
 	// const handleAddIncome = () => {
 	// 	e.preventDefault()
-		
+
 	// }
 
 	useEffect(() => {
@@ -47,105 +54,122 @@ export default function Dashboard() {
 	}, []);
 
 	return (
-		<section className="flex  overflow-hidden bg-[#13e372]">
+		<section className="flex overflow-hidden bg-[#2e3647]">
 			<Navbar />
-			<main className="h-screen w-screen">
-				<div className="pt-6 px-4">
-					<div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 content-end">
-						{/* expense form */}
-						<form onSubmit={handleAddExpense}>
-							<div className="bg-[#f4f5f6] shadow rounded-lg p-4 sm:p-6 xl:p-8">
-								<div className="mb-4 flex items-center justify-between">
-									<div>
-										<h2>Expenses</h2>
-									</div>
-									<div className="flex-shrink-0">
-										{/* form input */}
-										<label htmlFor="date">Date</label>
-										<input
-											type="date"
-											className="rounded-md border-2 border-black ml-1 text-center"
-											value={date}
-											onChange={e => setDate(e.target.value)}
-										/>
-									</div>
-								</div>
-								<div className="flex flex-col mt-8">
-									<div className="overflow-x-auto rounded-lg">
-										<div className="align-middle inline-block min-w-full">
-											<div className="shadow overflow-hidden sm:rounded-lg space-x-5 flex justify-center">
-												{/* form inputs */}
-												<label className="mt-3" htmlFor="title">Title</label>
-												<input
-													type="text"
-													placeholder="Title"
-													className="rounded-md border-2 border-black text-center"
-													value={title}
-													onChange={e => setTitle(e.target.value)}
-												/>
+			{/* form containers */}
+			<div className="flex-grow container px-6 py-10 color-gr rounded-3xl mx-5 my-5">
+				<section className="text-gray-400 bg-gray-900 body-font rounded-2xl">
+					<div className="container px-5 py-24 flex justify-center">
+						<div className="flex flex-wrap -m-4">
+							<div className="p-4 lg:w-1/2 md:w-full">
+								<h2 className="text-white text-lg title-font font-medium ml-1">
+									Expenses
+								</h2>
+								<div className="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
+									<div className="flex-grow ">
+										<form onSubmit={handleAddExpense} className="mb-2">
+											{/* <label className="mr-2">Date</label>
+											<input
+												type="date"
+												className="rounded-lg bg-transparent border border-black p-1"
+											/> */}
 
-												<label className="mt-3" htmlFor="amount">Amount</label>
-												<input
-													type="text"
-													placeholder="Amount"
-													className="rounded-md border-2 border-black text-center"
-													value={amount}
-													onChange={e => setAmount(e.target.value)}
-												/>
-												<button type="submit" className="bg-[#13e372] p-2 mt-1 rounded-lg hover:-translate-x-1 hover:-translate-y-1 hover:drop-shadow-xl duration-300 ">Click</button>
-											</div>
-										</div>
-									</div>
-
-									{/* ExpenseFormList comp here */}
-									{!expenses ? (
-										<p className="text-center mt-2">Loading...</p>
-									) : (
-										expenses.map((expense) => (
-											<ExpenseFormList
-												key={expense._id}
-												date={expense.date}
-												title={expense.title}
-												amount={expense.amount}
+											<label className="mx-2">Title</label>
+											<input
+												value={title}
+												onChange={(e) => setTitle(e.target.value)}
+												type="text"
+												placeholder="Title"
+												className="rounded-lg bg-transparent border border-white p-2 text-center"
 											/>
-										))
-									)}
+
+											<label className="mx-2">Amount</label>
+											<input
+												value={amount}
+												onChange={(e) => setAmount(e.target.value)}
+												type="text"
+												placeholder="Amount"
+												className="rounded-lg bg-transparent border border-white p-2 text-center"
+											/>
+											<button
+												type="submit"
+												className="bg-purple-500 hover:bg-purple-400 p-2 mt-5 text-white rounded-xl w-full"
+											>
+												Add
+											</button>
+										</form>
+										{!expenses ? (
+											<p className="text-center mt-2">Loading...</p>
+										) : (
+											expenses.map((expense) => (
+												<ExpenseFormList
+													key={expense._id}
+													date={expense.date}
+													title={expense.title}
+													amount={expense.amount}
+												/>
+											))
+										)}
+									</div>
 								</div>
 							</div>
-						</form>
 
-						{/* income form */}
-						<div className="bg-[#f4f5f6] shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-							<div className="mb-4 flex items-center justify-between">
-								<div></div>
-								<div className="flex-shrink-0"></div>
-							</div>
-							<div className="flex flex-col mt-8">
-								<div className="overflow-x-auto rounded-lg">
-									<div className="align-middle inline-block min-w-full">
-										<div className="shadow overflow-hidden sm:rounded-lg"></div>
+							<div className="p-4 lg:w-1/2 md:w-full">
+								<h2 className="text-white text-lg title-font font-medium ml-1">
+									Income
+								</h2>
+								<div className="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
+									<div className="flex-grow ">
+										<form action="" className="mb-2">
+											{/* <label className="mr-2">Date</label>
+											<input
+												type="date"
+												className="rounded-lg bg-transparent border border-black p-1"
+											/> */}
+
+											<label className="mx-2">Title</label>
+											<input
+												// value={title}
+												// onChange={(e) => setTitle(e.target.value)}
+												type="text"
+												placeholder="Title"
+												className="rounded-lg bg-transparent border border-white p-2 text-center"
+											/>
+
+											<label className="mx-2">Amount</label>
+											<input
+												// value={amount}
+												// onChange={(e) => setAmount(e.target.value)}
+												type="text"
+												placeholder="Amount"
+												className="rounded-lg bg-transparent border border-white p-2 text-center"
+											/>
+										</form>
+										{/* {!expenses ? (
+											<p className="text-center mt-2">Loading...</p>
+										) : (
+											expenses.map((expense) => (
+												<ExpenseFormList
+													key={expense._id}
+													date={expense.date}
+													title={expense.title}
+													amount={expense.amount}
+												/>
+											))
+										)} */}
+										<button
+											type="submit"
+											className="bg-purple-500 hover:bg-purple-400 p-2 mt-5 text-white rounded-xl w-full"
+										>
+											Add
+										</button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					{/* second row */}
-					<div className="bg-[#f4f5f6] shadow rounded-lg p-4 sm:p-6 xl:p-8 mt-10">
-							<div className="mb-4 flex items-center justify-between">
-								<div>Charts</div>
-								<div className="flex-shrink-0"></div>
-							</div>
-							<div className="flex flex-col mt-8">
-								<div className="overflow-x-auto rounded-lg">
-									<div className="align-middle inline-block min-w-full">
-										<div className="shadow overflow-hidden sm:rounded-lg"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-				</div>
-			</main>
+				</section>
+			</div>
 		</section>
 	);
 }
