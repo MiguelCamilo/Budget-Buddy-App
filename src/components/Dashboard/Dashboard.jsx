@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SideBar from "../Navbar/SideBar";
 import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
+import BeatLoader from "react-spinners/BeatLoader";
 import "./dashboard.css";
 
 export default function Dashboard() {
@@ -80,7 +81,7 @@ export default function Dashboard() {
 												onChange={(e) => setTitle(e.target.value)}
 												type="text"
 												placeholder="Title"
-												className="rounded-lg bg-transparent border border-white p-2 text-center"
+												className="rounded-lg dark:bg-gray-900 bg-transparent border border-white p-2 text-center"
 											/>
 
 											<label className="mx-2">Amount</label>
@@ -99,15 +100,26 @@ export default function Dashboard() {
 											</button>
 										</form>
 										{!expenses ? (
-											<p className="text-center mt-2">Loading...</p>
+											<p className="text-center mt-2">
+												{/* loading anim */}
+												<BeatLoader
+													color="#b765e6"
+													size={15}
+													speedMultiplier={0.6}
+													className="mt-5"
+												/>
+											</p>
 										) : (
 											expenses.map((expense) => (
-												<ExpenseFormList
-													key={expense._id}
-													date={expense.date}
-													title={expense.title}
-													amount={expense.amount}
-												/>
+												<div key={expense._id}>
+													<ExpenseFormList
+														data={expense}
+														date={expense.date}
+														title={expense.title}
+														amount={expense.amount}
+														setExpenses={setExpenses}
+													/>
+												</div>
 											))
 										)}
 									</div>

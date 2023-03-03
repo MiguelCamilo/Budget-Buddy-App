@@ -1,15 +1,24 @@
-import { AiOutlineDelete } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 
-export default function ExpenseFormList({ date, title, amount }) {
+export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 	// const dateObj = new Date();
 	// const month = dateObj.getMonth() + 1;
 	// const year = dateObj.getFullYear();
 	// const day = dateObj.getDate() + 1;
 
+	const { _id } = data;
+
 	// delete request here
-	const handleDeleteExpense = (e) => {
-		alert('button clicked')
+	const handleDeleteExpense = () => {
+		fetch(`http://localhost:3030/expenses/${_id}`, {
+			method: 'DELETE',
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then(res => res.json())
+			.then(setExpenses)
+			.catch(err => console.error(err))
 	}
 
 	return (
