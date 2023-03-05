@@ -1,15 +1,10 @@
 import { TiDeleteOutline } from "react-icons/ti";
 
 export default function ExpenseFormList({ data, title, amount, setExpenses }) {
-	// const dateObj = new Date();
-	// const month = dateObj.getMonth() + 1;
-	// const year = dateObj.getFullYear();
-	// const day = dateObj.getDate() + 1;
-
 	const { _id } = data;
 
 	// delete request here
-	const handleDeleteExpense = () => {
+	const handle_delete_expense = () => {
 		fetch(`http://localhost:3030/expenses/${_id}`, {
 			method: 'DELETE',
 			headers: {
@@ -28,8 +23,9 @@ export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 			</p> */}
 			<p className="capitalize">{title}</p>
 			<p>{`$${amount}`}</p>
-			<button onClick={handleDeleteExpense} className="text-red-500 text-2xl">
-				<TiDeleteOutline />
+
+			<button onClick={handle_delete_expense} className="text-red-800 text-2xl">
+				<TiDeleteOutline className="hover:text-red-500"/>
 			</button>
 		</div>
 	);
