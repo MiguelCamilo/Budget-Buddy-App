@@ -9,7 +9,7 @@ export default function SideBar() {
 
 	return (
 		<>
-			<aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 rounded-r-2xl space-y-10">
+			<aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-[#322f44] dark:border-gray-700 rounded-r-2xl space-y-10">
 			{/* BUDGET BUDDY LOGO */}
 			<div className="flex flex-col items-center mt-6 -mx-2">
 				<img
@@ -27,7 +27,7 @@ export default function SideBar() {
 				<div className="flex flex-col justify-between flex-1 mt-10 ">
 					<nav className="-mx-3 space-y-6">
 						<div className="space-y-3 ">
-							<label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">
+							<label className="px-3 text-xs text-gray-900 uppercase dark:text-[#D076FF]">
 								home dashboard
 							</label>
 							<a
@@ -35,12 +35,12 @@ export default function SideBar() {
 								href="#"
 							>
 								<AiFillHome/>
-								<span className="mx-2 text-sm font-medium text-purple-400">Dashboard</span>
+								<span className="mx-2 text-sm font-medium text-purple-400 dark:text-[#F9EFFF]">Dashboard</span>
 							</a>
 						
 						</div>
 						<div className="space-y-3 ">
-							<label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">
+							<label className="px-3 text-xs text-gray-900 uppercase dark:text-[#D076FF]">
 								savings dashboard
 							</label>
 							
@@ -49,11 +49,11 @@ export default function SideBar() {
 								href="#"
 							>
 								<AiOutlineUser/>
-								<span className="mx-2 text-sm font-medium text-purple-400">Savings</span>
+								<span className="mx-2 text-sm font-medium text-purple-400 dark:text-[#F9EFFF]">Savings</span>
 							</a>
 						</div>
 						<div className="space-y-3 ">
-							<label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">
+							<label className="px-3 text-xs text-gray-900 uppercase dark:text-[#D076FF]">
 								community forum
 							</label>
 							<a
@@ -61,7 +61,7 @@ export default function SideBar() {
 								href="#"
 							>
 								<FiMessageSquare/>
-								<span className="mx-2 text-sm font-medium text-purple-400">Communit Forum</span>
+								<span className="mx-2 text-sm font-medium text-purple-400 dark:text-[#F9EFFF]">Forum</span>
 							</a>
 							{/* LOG OUT BUTTON AT THE BOTTOM */}
 						</div>

@@ -46,32 +46,32 @@ export default function ExpenseForm() {
 
 	return (
 		<div className="p-4 lg:w-1/2 md:w-full">
-			<h2 className="text-white text-lg title-font font-medium ml-1">
+			<h2 className="text-[#3D3A53] dark:text-[#F9EFFF] text-lg title-font font-extrabold ml-1">
 				Expenses
 			</h2>
-			<div className="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
+			<div className="flex border-2 rounded-lg border-[#3D3A53] dark:border-[#F9EFFF] p-8 sm:flex-row flex-col">
 				<div className="flex-grow ">
 					<form onSubmit={handle_add_expense} className="mb-2">
-						<label className="mx-2">Title</label>
+						<label className="mx-2 text-[#3D3A53] dark:text-[#F9EFFF]">Title</label>
 						<input
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
 							type="text"
 							placeholder="Title"
-							className="rounded-lg dark:bg-gray-900 bg-transparent border border-white p-2 text-center"
+							className="rounded-lg text-[#3D3A53] dark:text-[#F9EFFF] bg-transparent border-2 border-[#3D3A53] dark:border-[#F9EFFF] p-2 text-center"
 						/>
 
-						<label className="mx-2">Amount</label>
+						<label className="mx-2 text-[#3D3A53] dark:text-[#F9EFFF]">Amount</label>
 						<input
 							value={amount}
 							onChange={(e) => setAmount(e.target.value)}
 							type="text"
 							placeholder="Amount"
-							className="rounded-lg bg-transparent border border-white p-2 text-center"
+							className="rounded-lg bg-transparent border-2 border-[#3D3A53] dark:border-[#F9EFFF] p-2 text-center"
 						/>
 						<button
 							type="submit"
-							className="bg-purple-500 hover:bg-purple-400 p-2 mt-5 text-white rounded-xl w-full"
+							className="bg-[#3D3A53] dark:bg-purple-500 hover:bg-purple-400 p-2 mt-5 text-white rounded-xl w-full drop-shadow-2xl"
 						>
 							Add
 						</button>
