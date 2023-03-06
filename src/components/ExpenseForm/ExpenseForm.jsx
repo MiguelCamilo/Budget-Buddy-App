@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 import BeatLoader from "react-spinners/BeatLoader";
+import ExpenseChart from "../ChartJS/ExpenseChart";
 
 export default function ExpenseForm() {
 	const [expenses, setExpenses] = useState();
