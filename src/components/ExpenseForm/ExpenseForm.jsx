@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
-import {
-	Card,
-	Input,
-	Select,
-	Typography,
-	Option,
-} from "@material-tailwind/react";
 import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 import BeatLoader from "react-spinners/BeatLoader";
-import ExpenseChart from "../ChartJS/ExpenseChart";
 
 export default function ExpenseForm() {
-	const [expenses, setExpenses] = useState();
+    const [expenses, setExpenses] = useState();
 	const [type, setType] = useState();
 	const [title, setTitle] = useState("");
 	const [amount, setAmount] = useState("");
 
-	const handle_add_expense = (e) => {
+    const handle_add_expense = (e) => {
 		e.preventDefault();
 
 		if (!title && !amount && !date) {
@@ -45,6 +37,7 @@ export default function ExpenseForm() {
 		setAmount("");
 	};
 
+
 	useEffect(() => {
 		fetch(`http://localhost:3030/expenses`)
 			.then((res) => res.json())
@@ -53,57 +46,73 @@ export default function ExpenseForm() {
 	}, []);
 
 	return (
-		<div className="mt-10 bg-[#3D3A53] p-2 md:p-6 rounded-xl">
-			<Card
-				color="transparent"
-				shadow={true}
-				className="border border-gray-800 p-5 drop-shadow-2xl shadow-gray-900"
-			>
-				<Typography variant="h4" className="text-white">
-					Expenses
-				</Typography>
-				<Typography color="gray" className="mt-1 font-normal text-white">
-					Enter you expenes.
-				</Typography>
-				<form
-					onSubmit={handle_add_expense}
-					className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-				>
-					<div className="mb-4 flex flex-col gap-6">
-						<Select
-							value={type}
-							onChange={(e) => setType(e.target.value)}
-							label="Type of Expense"
-						>
-							<Option>Food</Option>
-							<Option>Clothes</Option>
-						</Select>
-						<Input
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
-							size="lg"
-							type="text"
-							label="Title"
-						/>
-						<Input
-							value={amount}
-							onChange={(e) => setAmount(e.target.value)}
-							type="number"
-							size="lg"
-							label="Amount"
-						/>
+		<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
+			<div className="flex items-center justify-between mb-4">
+				<div className="flex-shrink-0">
+					<span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
+						Expenses
+					</span>
+					<h3 className="text-base font-normal text-gray-500">
+						Enter your Expenses
+					</h3>
+				</div>
+			</div>
+			<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
+
+                {/* form */}
+				<form onSubmit={handle_add_expense}>
+					<div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+						<div>
+							<label className="text-gray-700 " htmlFor="username">
+								Expense Type
+							</label>
+							<select
+                                value={type}
+							    onChange={(e) => setType(e.target.value)}
+								type="select"
+								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+							>
+                                <option value="">Miscellaneous</option>
+                                <option value="">Food</option>
+                                <option value="">Other</option>
+                            </select>
+						</div>
+						<div>
+							<label className="text-gray-700 " htmlFor="emailAddress">
+								Title
+							</label>
+							<input
+								value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+								type="text"
+								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+							/>
+						</div>
+						<div>
+							<label className="text-gray-700 " htmlFor="password">
+								Amount
+							</label>
+							<input
+								value={amount}
+                                onChange={(e) => setAmount(e.target.value)}
+								type="number"
+								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+							/>
+						</div>
 					</div>
-					<button type="submit" className="mt-6 bg-[#D076FF] text-white text-sm font-semibold uppercase w-full p-3 rounded-lg drop-shadow-md hover:drop-shadow-lg">
-						Add
-					</button>
+					<div className="flex justify-center mt-6">
+						<button type="submit" className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-green-600 drop-shadow-xl">
+							+
+						</button>
+					</div>
 				</form>
-				{!expenses ? (
+                {!expenses ? (
 					<p className="text-center mt-2">
 						{/* loading anim */}
 						<BeatLoader
-							color="#b765e6"
+							color="#d63636"
 							size={15}
-							speedMultiplier={0.6}
+                            speedMultiplier={0.6}
 							className="mt-5"
 						/>
 					</p>
@@ -119,7 +128,8 @@ export default function ExpenseForm() {
 						</div>
 					))
 				)}
-			</Card>
+			</section>
 		</div>
 	);
 }
+

@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@material-tailwind/react": "^1.4.2",
     "chart.js": "^4.2.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
