@@ -24,7 +24,7 @@ export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 			<p className="capitalize">{title}</p>
 			<p>{`$${amount}`}</p>
 
-			<button onClick={handle_delete_expense} className="text-red-800 text-2xl">
+			<button onClick={handle_delete_expense} className="text-red-800  text-2xl">
 				<TiDeleteOutline className="hover:text-red-500"/>
 			</button>
 		</div>

@@ -8,7 +8,7 @@ import {
 	IconButton,
 } from "@material-tailwind/react";
 
-export default function Example() {
+export default function SideBar() {
 	const [openNav, setOpenNav] = useState(false);
 
 	useEffect(() => {
@@ -64,15 +64,17 @@ export default function Example() {
 	);
 
 	return (
-		<Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4">
+		<Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4 drop-shadow-2xl">
 			<div className="container mx-auto flex items-center justify-between text-blue-gray-900">
 				<Typography
 					as="a"
-					href="#"
+					href="/dashboard"
 					variant="small"
 					className="mr-4 cursor-pointer py-1.5 font-normal"
 				>
-					<span className="bg-[#D076FF] p-2 rounded-lg">Budget Buddy</span>
+					<button class="px-6 py-2 font-semibold tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#D076FF] rounded-lg hover:bg-[#d69bf6] focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 drop-shadow-xl">
+						Budget Buddy
+					</button>
 				</Typography>
 				<div className="hidden lg:block">{navList}</div>
 				<Button size="sm" className="hidden lg:inline-block">
@@ -119,7 +121,7 @@ export default function Example() {
 			<MobileNav open={openNav}>
 				<div className="container mx-auto">
 					{navList}
-					<Button size="sm" fullWidth className="mb-2">
+					<Button size="sm" fullWidth className="mb-2 ">
 						<span>Log out</span>
 					</Button>
 				</div>
