@@ -17,15 +17,15 @@ export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 	}
 
 	return (
-		<div className="flex selection:flex-row justify-between mt-3 text-purple-400 border-2 border-white p-3 rounded-lg">
+		<div className="flex selection:flex-row justify-between mt-3 text-gray-900 border-2 border-gray-500 p-3 rounded-lg drop-shadow-2xl">
 			{/* <p>
 				{dateObj}
 			</p> */}
 			<p className="capitalize">{title}</p>
 			<p>{`$${amount}`}</p>
 
-			<button onClick={handle_delete_expense} className="text-red-800  text-2xl">
-				<TiDeleteOutline className="hover:text-red-500"/>
+			<button onClick={handle_delete_expense} className="text-red-500  text-2xl">
+				<TiDeleteOutline/>
 			</button>
 		</div>
 	);

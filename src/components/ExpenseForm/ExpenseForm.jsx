@@ -70,7 +70,7 @@ export default function ExpenseForm() {
                                 value={type}
 							    onChange={(e) => setType(e.target.value)}
 								type="select"
-								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							>
                                 <option value="">Miscellaneous</option>
                                 <option value="">Food</option>
@@ -78,14 +78,14 @@ export default function ExpenseForm() {
                             </select>
 						</div>
 						<div>
-							<label className="text-gray-700 " htmlFor="emailAddress">
+							<label className="text-gray-700">
 								Title
 							</label>
 							<input
 								value={title}
                                 onChange={(e) => setTitle(e.target.value)}
 								type="text"
-								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							/>
 						</div>
 						<div>
@@ -96,12 +96,12 @@ export default function ExpenseForm() {
 								value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
 								type="number"
-								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							/>
 						</div>
 					</div>
 					<div className="flex justify-center mt-6">
-						<button type="submit" className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-green-600 drop-shadow-xl">
+						<button type="submit" className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none drop-shadow-xl">
 							+
 						</button>
 					</div>

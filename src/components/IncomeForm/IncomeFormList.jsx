@@ -21,12 +21,12 @@ export default function IncomeFormList({ date, amount, setIncome, data }) {
 	const day = dateObj.getDate() + 1;
 
 	return (
-		<div className="flex selection:flex-row justify-between mt-3 text-purple-400 border-2 border-white p-3 rounded-lg">
+		<div className="flex selection:flex-row justify-between mt-3 text-gray-900 p-3 rounded-lg border-2 border-gray-500 drop-shadow-xl">
 			<p>{month}-{day}-{year}</p>
 			<p>{`$${amount}`}</p>
 
-			<button onClick={handle_delete_income} className="text-red-800 text-2xl">
-				<TiDeleteOutline className="hover:text-red-500" />
+			<button onClick={handle_delete_income} className="text-red-500 text-2xl">
+				<TiDeleteOutline />
 			</button>
 		</div>
 	);
