@@ -39,7 +39,7 @@ export default function ExpenseForm() {
 		fetch(`https://api-budget-buddy.web.app/expenses`)
 			.then((res) => res.json())
 			.then(setExpenses)
-			.catch((err) => console.log(err));
+			.catch((err) => alert(err));
 	}, []);
 
 	return (
