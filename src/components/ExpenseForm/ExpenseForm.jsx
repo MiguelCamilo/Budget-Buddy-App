@@ -16,11 +16,12 @@ export default function ExpenseForm() {
 		}
 
 		const new_expense = {
+			type: type,
 			title: title,
 			amount: amount,
 		};
 
-		fetch(`http://localhost:3030/expenses`, {
+		fetch(`https://api-budget-buddy.web.app/expenses`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -39,7 +40,7 @@ export default function ExpenseForm() {
 
 
 	useEffect(() => {
-		fetch(`http://localhost:3030/expenses`)
+		fetch(`https://api-budget-buddy.web.app/expenses`)
 			.then((res) => res.json())
 			.then(setExpenses)
 			.catch((err) => console.log(err));
@@ -72,9 +73,9 @@ export default function ExpenseForm() {
 								type="select"
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							>
-                                <option value="">Miscellaneous</option>
-                                <option value="">Food</option>
-                                <option value="">Other</option>
+                                <option>Miscellaneous</option>
+                                <option>Food</option>
+                                <option>Other</option>
                             </select>
 						</div>
 						<div>

@@ -4,7 +4,7 @@ export default function IncomeFormList({ date, amount, setIncome, data }) {
 	const { _id } = data;
 
 	const handle_delete_income = () => {
-		fetch(`http://localhost:3030/income/${_id}`, {
+		fetch(`https://api-budget-buddy.web.app/income/${_id}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",

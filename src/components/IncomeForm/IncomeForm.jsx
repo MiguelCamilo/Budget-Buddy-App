@@ -15,11 +15,12 @@ export default function IncomeForm() {
 		}
 
 		const new_income = {
+            type: type,
 			date: date,
 			amount: amount,
 		};
 
-		fetch(`http://localhost:3030/income`, {
+		fetch(`https://api-budget-buddy.web.app/income`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -38,7 +39,7 @@ export default function IncomeForm() {
 	};
 
 	useEffect(() => {
-		fetch(`http://localhost:3030/income`)
+		fetch(`https://api-budget-buddy.web.app/income`)
 			.then((res) => res.json())
 			.then(setIncome)
 			.catch((err) => console.error(err));

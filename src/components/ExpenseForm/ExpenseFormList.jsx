@@ -5,7 +5,7 @@ export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 
 	// delete request here
 	const handle_delete_expense = () => {
-		fetch(`http://localhost:3030/expenses/${_id}`, {
+		fetch(`https://api-budget-buddy.web.app/expenses/${_id}`, {
 			method: 'DELETE',
 			headers: {
 				"Content-Type": "application/json",
@@ -18,9 +18,6 @@ export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 
 	return (
 		<div className="flex selection:flex-row justify-between mt-3 text-gray-900 border-2 border-gray-500 p-3 rounded-lg drop-shadow-2xl">
-			{/* <p>
-				{dateObj}
-			</p> */}
 			<p className="capitalize">{title}</p>
 			<p>{`$${amount}`}</p>
 
