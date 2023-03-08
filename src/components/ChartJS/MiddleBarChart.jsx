@@ -7,7 +7,7 @@ export default function MiddleBarChart() {
         <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              * Expense Chart *
+              * Expense Bar Chart *
             </div>
           </div>
         </div>

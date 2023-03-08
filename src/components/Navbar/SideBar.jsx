@@ -16,34 +16,33 @@ export default function Sidebar() {
 						<ul className="space-y-5 pb-2">
 							<li>
 								{/* change this to router link */}
-								<a
-									href="#"
+								<Link to="/dashboard"
 									className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
 								>
 									<AiFillHome className="text-2xl" />
 									<span className="ml-3">Dashboard</span>
-								</a>
+								</Link>
 							</li>
 							<li>
 								{/* change this to router link */}
-								<a
-									href="#"
+								<Link
+									to="/savings"
 									className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
 								>
 									<MdSavings className="text-2xl"/>
 									<span className="ml-3">Savings</span>
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									to="/community"
 									className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
 								>
 									<MdForum className="text-2xl"/>
 									<span className="ml-3 flex-1 whitespace-nowrap">
 										Community Forum
 									</span>
-								</a>
+								</Link>
 							</li>
 						</ul>
 						<div className="space-y-2 pt-2">

@@ -4,6 +4,8 @@ import LoginCard from "./components/LoginCard/LoginCard";
 import SignUpCard from "./components/SignupCard/SignupCard";
 import Welcome from "./pages/Welcome";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Savings from "./components/Dashboard/Savings";
+import Community from "./components/Dashboard/Community";
 import "./assets/App.css";
 
 const AuthContext = createContext(null);
@@ -18,8 +20,10 @@ function App() {
 						<Routes>
 							<Route
 								path="/dashboard"
-								element={user ? <Welcome /> : <Dashboard />}
+								element={user ? <LoginCard /> : <Dashboard />}
 							/>
+							<Route path="/community" element={<Community />} />
+							<Route path="/savings" element={<Savings />} />
 							<Route path="/login" element={<LoginCard />} />
 							<Route path="/signup" element={<SignUpCard />} />
 							<Route exact path="/" element={<Welcome />} />
