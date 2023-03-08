@@ -1,5 +1,24 @@
+import { useLocation } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
+
+// using useLocation hook to get the current URL path
+export function Header() {
+	const location = useLocation()
+	// grabs the pathname
+	const path = location.pathname
+	let path_name = ''
+
+	if ( path === '/dashboard' ) {
+		path_name = 'Home'
+	} else if ( path === '/savings' ) {
+		path_name = 'Savings'
+	} else if ( path === '/community') {
+		path_name = 'Community'
+	}
+	
+	return <h1>{path_name}</h1>
+}
 
 export default function Navbar() {
 	return (
@@ -16,6 +35,10 @@ export default function Navbar() {
 								Budget Buddy
 							</span>
 						</a>
+					</div>
+
+					<div className="font-bold text-base">
+						<Header />
 					</div>
 
 					<div className="flex items-center">

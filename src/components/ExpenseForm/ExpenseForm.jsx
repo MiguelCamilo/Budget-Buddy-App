@@ -15,11 +15,7 @@ export default function ExpenseForm() {
 			return alert("Expense's must be filled in.");
 		}
 
-		const new_expense = {
-			type: type,
-			title: title,
-			amount: amount,
-		};
+		const new_expense = { type, title, amount };
 
 		fetch(`https://api-budget-buddy.web.app/expenses`, {
 			method: "POST",
