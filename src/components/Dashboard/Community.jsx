@@ -6,7 +6,7 @@ export default function Community() {
     return (
         <div>
             <Navbar/>
-            <div className="flex overflow-hidden bg-white pt-16">
+            <div className="flex bg-white pt-16">
                 <Sidebar/>
             </div>
         </div>

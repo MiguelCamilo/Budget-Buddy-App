@@ -17,7 +17,7 @@ export default function ExpenseFormList({ data, title, amount, setExpenses }) {
 	}
 
 	return (
-		<div className="flex selection:flex-row justify-between mt-3 text-gray-900 border-2 border-gray-500 p-3 rounded-lg drop-shadow-2xl">
+		<div className="flex  justify-between mt-3 text-gray-900 border-2 border-gray-500 p-3 rounded-lg drop-shadow-2xl overflow-y-auto">
 			<p className="capitalize">{title}</p>
 			<p>{`$${amount}`}</p>
 

@@ -73,9 +73,9 @@ export default function ExpenseForm() {
 								type="select"
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							>
-                                <option>Miscellaneous</option>
-                                <option>Food</option>
-                                <option>Other</option>
+                                <option value="miscellaneous">Miscellaneous</option>
+                                <option value="food">Food</option>
+                                <option value="other">Other</option>
                             </select>
 						</div>
 						<div>

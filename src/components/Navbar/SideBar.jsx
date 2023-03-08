@@ -6,7 +6,6 @@ import { FiLogOut } from "react-icons/fi"
 export default function Sidebar() {
 	return (
 		<aside
-			id="sidebar"
 			className="fixed h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
 			aria-label="Sidebar"
 		>
