@@ -1,11 +1,25 @@
 import { useState } from "react";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { GiPiggyBank } from "react-icons/gi";
 
 export default function SavingsCard({ data, title, new_goal, setSavings }) {
 	const [progress, setProgress] = useState(0);
 	const [goal, setGoal] = useState(new_goal);
 	const [amount, setAmount] = useState("");
 
-    const { _id } = data; // this will be used when we create  delete req
+	const { _id } = data; // this will be used when we create  delete req
+
+	const handle_delete_expense = () => {
+		fetch(`https://api-budget-buddy.web.app/savings/${_id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((res) => res.json())
+			.then(setSavings)
+			.catch((err) => alert(err.message));
+	};
 
 	const update_progress = (e) => {
 		e.preventDefault();
@@ -22,29 +36,31 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 		setAmount("");
 	};
 
-    // FIX THIS!!!
-    // function UpdateGoal() {
-    //     return <h1>{goal - progress}</h1>
-    // }
+	//! FIX THIS
+	// function UpdateGoal() {
+	//     return <h1>{goal - progress}</h1>
+	// }
 
 	return (
 		<>
 			<div className="w-full grid grid-cols-1 mt-10">
 				<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
-					{/* <div className="flex justify-center">
-									<img src={savings} alt="" className="w-20 h-20" />
-									</div> */}
+					<label className="text-gray-700 font-bold">{title}</label>
+					<p className="text-gray-500 text-sm">
+						Your savings goal is: ${new_goal}
+					</p>
+					{/* <p><UpdateGoal/></p> */}
 					{/* add savings goal form */}
 
 					{/* income that adds to savings goal */}
 					<form onSubmit={update_progress}>
 						<div className="grid grid-cols-1 gap-6 mt-4">
 							<div>
-								<label className="text-gray-700 font-bold">{title}</label>
-                                <div className="flex justify-between">
-                                <p className="text-gray-500 text-sm">Your savings goal is: ${new_goal}</p>
-                                {/* <p><UpdateGoal/></p> */}
-                                </div>
+								<div className="flex justify-end">
+									<button onClick={handle_delete_expense}>
+										<RiDeleteBin5Line className="flex justify-end text-xl text-red-600" />
+									</button>
+								</div>
 								<input
 									value={amount}
 									onChange={(e) => setAmount(e.target.value)}
@@ -56,12 +72,12 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 						</div>
 						<div className="flex justify-center mt-6">
 							<button
-                                // onClick={UpdateGoal}
+								// onClick={UpdateGoal}
 								type="submit"
 								disabled={progress >= 100}
-								className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-500 rounded-md hover:bg-green-400 focus:outline-none drop-shadow-xl"
+								className="flex justify-center marker:px-8 w-[10%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-500 rounded-md hover:bg-green-400 focus:outline-none drop-shadow-xl"
 							>
-								+
+								<GiPiggyBank />
 							</button>
 						</div>
 					</form>
