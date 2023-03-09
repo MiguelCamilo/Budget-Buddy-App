@@ -10,11 +10,11 @@ export default function Savings() {
 	const [goal, setGoal] = useState("");
 
 	const handle_add_savings = (e) => {
-		if (goal <= 0 || title.length <= 0) {
-			return alert("Please enter a goal and title.")
-		}
-
 		e.preventDefault();
+
+		if (goal <= 0 || title.length <= 0) {
+			return alert("Please enter a goal and title.");
+		}
 
 		const new_savings = { title, goal };
 
@@ -50,10 +50,12 @@ export default function Savings() {
 					<Sidebar />
 					{/* entire background */}
 					<div className="h-full w-full bg-gray-100 relative overflow-y-auto lg:ml-64">
-						<div className="pt-6 px-4 h-screen">
-							<div className="w-full grid grid-cols-1">
+						<div className="pt-6 px-4 h-screen overflow-y-scroll">
+							<div className="w-full">
 								<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
-									<h3 className="flex justify-center text-lg font-bold">Let's Create a Saving's Goal!</h3>
+									<h3 className="flex justify-center text-lg font-bold">
+										Let's Create a Saving's Goal!
+									</h3>
 									<form onSubmit={handle_add_savings}>
 										<div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
 											<div>
@@ -62,7 +64,7 @@ export default function Savings() {
 													value={title}
 													onChange={(e) => setTitle(e.target.value)}
 													type="text"
-													className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
+													className="block w-full px-4 py-2 mt-2 text-center text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
 												/>
 											</div>
 											<div>
@@ -73,7 +75,8 @@ export default function Savings() {
 													value={goal}
 													onChange={(e) => setGoal(e.target.value)}
 													type="number"
-													className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
+													placeholder="$"
+													className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring placeholder:text-left text-center"
 												/>
 											</div>
 										</div>
@@ -87,28 +90,28 @@ export default function Savings() {
 										</div>
 									</form>
 								</div>
-								{!savings ? (
-									<p className="text-center mt-2">
-										{/* loading anim */}
-										<BeatLoader
-											color="#45cc55"
-											size={15}
-											speedMultiplier={0.6}
-											className="mt-5"
-										/>
-									</p>
-								) : (
-									savings.map((saving) => (
-										<div key={saving._id}>
+								{
+									!savings ? (
+										<p className="text-center mt-2">
+											{/* loading anim */}
+											<BeatLoader
+												color="#45cc55"
+												size={15}
+												speedMultiplier={0.6}
+												className="mt-5"
+											/>
+										</p>
+									) : (
+										savings.map((item) => (
 											<SavingsCard
-												data={saving}
-												title={saving.title}
-												new_goal={saving.goal}
+												key={item._id}
+												data={item}
+												title={item.title}
+												new_goal={item.goal}
 												setSavings={setSavings}
 											/>
-										</div>
-									))
-								)}
+										))
+									)}
 							</div>
 						</div>
 					</div>

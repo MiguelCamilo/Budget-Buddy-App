@@ -33,14 +33,14 @@ export default function Navbar() {
 							to="/dashboard"
 							className="text-xl font-bold flex items-center lg:ml-2.5"
 						>
-							<span className="flex flex-wrap self-center whitespace-nowrap text-green-500">
+							<span className="flex flex-wrap self-center whitespace-nowrap font-black text-green-500">
 								Budget Buddy
 								<img src={savings} alt="" className="w-8 h-8" />
 							</span>
 						</Link>
 					</div>
 
-					<div className="font-bold text-base">
+					<div className="font-black text-base">
 						<Header />
 					</div>
 

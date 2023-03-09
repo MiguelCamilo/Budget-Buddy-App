@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { GiPiggyBank } from "react-icons/gi";
 
 export default function SavingsCard({ data, title, new_goal, setSavings }) {
-	const [progress, setProgress] = useState(0);
+	
+	const { _id } = data; // this will be used when we create  delete req
+
+	const [progress, setProgress] = useState(() => {
+		return parseInt(localStorage.getItem(`progress-${_id}`)) || 0;
+	});
 	const [goal, setGoal] = useState(new_goal);
 	const [amount, setAmount] = useState("");
 
-	const { _id } = data; // this will be used when we create  delete req
 
 	const handle_delete_expense = () => {
 		fetch(`https://api-budget-buddy.web.app/savings/${_id}`, {
@@ -21,11 +25,12 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 			.catch((err) => alert(err.message));
 	};
 
+	// this updates the progress bar num and width
 	const update_progress = (e) => {
 		e.preventDefault();
 
-		if (amount <= 0) {
-			return alert("Enter an amount greater than 0");
+		if (amount === 0) {
+			return alert("Enter an amount greater than zero.");
 		}
 
 		const total = Number(amount).toFixed(2); // converting the string amount to a number since toFixed returns a string
@@ -36,6 +41,11 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 		setAmount("");
 	};
 
+	useEffect(() => {
+		// saving the progress in local storage
+		localStorage.setItem(`progress-${_id}`, progress);
+	}, [progress, _id]); // progress is stored by the id it's assigned on the backend
+
 	//! FIX THIS
 	// function UpdateGoal() {
 	//     return <h1>{goal - progress}</h1>
@@ -44,23 +54,27 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 	return (
 		<>
 			<div className="w-full grid grid-cols-1 mt-10">
-				<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
-					<label className="text-gray-700 font-bold">{title}</label>
-					<p className="text-gray-500 text-sm">
-						Your savings goal is: ${new_goal}
-					</p>
+				<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4 ">
+					<label className="text-gray-700 font-bold capitalize">{title}</label>
+
+					<div className="flex justify-between">
+						<p className="text-gray-500 text-sm">
+							Your savings goal is: ${new Intl.NumberFormat().format(new_goal)}
+						</p>
+						<RiDeleteBin5Line
+							onClick={handle_delete_expense}
+							className="flex justify-end text-xl text-red-600 hover:bg-red-100"
+						/>
+					</div>
+
 					{/* <p><UpdateGoal/></p> */}
 					{/* add savings goal form */}
-
 					{/* income that adds to savings goal */}
+
 					<form onSubmit={update_progress}>
 						<div className="grid grid-cols-1 gap-6 mt-4">
 							<div>
-								<div className="flex justify-end">
-									<button onClick={handle_delete_expense}>
-										<RiDeleteBin5Line className="flex justify-end text-xl text-red-600" />
-									</button>
-								</div>
+								<div className="flex justify-end"></div>
 								<input
 									value={amount}
 									onChange={(e) => setAmount(e.target.value)}

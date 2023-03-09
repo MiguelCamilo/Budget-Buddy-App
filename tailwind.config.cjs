@@ -8,8 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: "Poppins",
-        kaushan: "Kaushan Script",
+        inter: ["Inter", "sans-serif"]
       },
     },
   },
