@@ -63,7 +63,7 @@ export default function LoginCard() {
 				<a>
 					<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
 						<button className="flex items-center justify-center py-2 space-x-3 border bg-white border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal">
-							<img src="/images/google.png" alt="" className="w-9" />
+							<img src="/src/assets/images/google.png" alt="" className="w-9" />
 							<span className="font-normal">Google</span>
 						</button>
 					</div>
@@ -72,7 +72,7 @@ export default function LoginCard() {
 			<div>
 				{/* side image */}
 				<img
-					src="/images/image.jpg"
+					src="/src/assets/images/image.jpg"
 					alt="image"
 					className="w-[450px] h-full hidden md:block rounded-r-2xl"
 				/>
