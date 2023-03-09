@@ -1,7 +1,6 @@
 import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginCard from "./components/LoginCard/LoginCard";
-import SignUpCard from "./components/SignupCard/SignupCard";
 import Welcome from "./pages/Welcome";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Savings from "./components/Dashboard/Savings";
@@ -25,8 +24,7 @@ function App() {
 							<Route path="/community" element={<Community />} />
 							<Route path="/savings" element={<Savings />} />
 							<Route path="/login" element={<LoginCard />} />
-							<Route path="/signup" element={<SignUpCard />} />
-							<Route exact path="/" element={<Welcome />} />
+							<Route exact path="/" element={<LoginCard />} />
 						</Routes>
 			</BrowserRouter>
 		</AuthContext.Provider>
