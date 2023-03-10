@@ -33,7 +33,7 @@ export default function Navbar() {
 							to="/dashboard"
 							className="text-xl font-bold flex items-center lg:ml-2.5"
 						>
-							<span className="flex flex-wrap self-center whitespace-nowrap font-black text-[#051a29] hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300">
+							<span className="flex flex-wrap self-center whitespace-nowrap font-black text-[#00D884] italic tracking-tighter hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300">
 								Budget Buddy
 								<img src={savings} alt="" className="w-8 h-8" />
 							</span>

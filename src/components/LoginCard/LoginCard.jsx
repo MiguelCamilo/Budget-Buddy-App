@@ -1,4 +1,4 @@
-
+import logo from "../../assets/logo.svg"
 
 const arrow = (
 	<svg
@@ -19,19 +19,25 @@ const arrow = (
 
 export default function LoginCard() {
 	return (
-		<div className="flex h-screen bg-gray-100 rounded-r-xl">
-			<div className="flex flex-wrap w-[400px] flex-col justify-start py-9 px-9 pt-0">
-				<div className="flex w-[40rem] min-w-[350px]">
-					<h1 className="text-[48px] font-black text-center text-[#1E8277]">Budget Buddy</h1>
+		<div className="flex h-screen bg-white rounded-r-xl">
+			<div className="flex flex-wrap w-[400px] flex-col justify-start py-9 px-6 pt-0 mt-10">
+				<h1 className="text-[48px] font-black text-center text-[#00D884] italic tracking-tighter">
+					Budget Buddy
+				</h1>
+
+				<h2 className="w-[40%] min-w-[300px] m-[24px] text-gray-600 text-lg font-bold leading-8 whitespace-pre-wrap">
+					Welcome to Budget Buddy! Take control of your finances and achieve
+					your financial goals with our easy-to-use expense tracking and
+					budgeting tools. Let's get started!
+				</h2>
+				<div className="flex justify-start flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0 ml-5">
+					<button className="flex items-center justify-center space-x-3 border p-3 sm:p-0 bg-[#1ACB88] border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-[50%] font-extrabold text-white">
+						<span className="font-normal">Get Started</span>
+					</button>
 				</div>
-				<h2 className="w-[40%] min-w-[300px] m-[24px]">
-						Welcome to Budget Buddy! Take control of your finances and achieve
-						your financial goals with our easy-to-use expense tracking and
-						budgeting tools. Let's get started!
-					</h2>
 			</div>
-			<div className="flex flex-col flex-grow items-center py-9 px-9 pt-0 bg-[#1E8277] bg-contain">
-				{/* <img src={login} alt="" /> */}
+			<div className="hidden md:flex flex-col flex-grow items-center py-9 px-9 pt-0 bg-[#1E8277] bg-contain">
+				<img src={logo} alt="" className=""/>
 			</div>
 		</div>
 	);
@@ -43,14 +49,7 @@ export default function LoginCard() {
 // </p>
 
 // {/* bottom buttons container */}
-// <a>
-// 	<div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
-// 		<button className="flex items-center justify-center py-2 space-x-3 border bg-white border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-full font-normal">
-// 			<img src="/src/assets/images/google.png" alt="" className="w-9" />
-// 			<span className="font-normal">Google</span>
-// 		</button>
-// 	</div>
-// </a>
+<a></a>;
 
 // 	<div className="p-6 md:p-20">
 // 	{/* content */}
