@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
-import savings from "/src/assets/images/savings.png"
+import savings from "/src/assets/images/savings.png";
 
 // using useLocation hook to get the current URL path
 export function Header() {
