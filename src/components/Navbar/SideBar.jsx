@@ -47,7 +47,7 @@ export default function Sidebar() {
 						<div className="space-y-2 pt-2">
 							<a
 								href="#"
-								className="text-base text-gray-900 font-normal rounded-lg hover:bg-red-100 flex items-center p-2 group "
+								className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300"
 							>
 								<FiLogOut className="text-2xl text-red-600"/>
 								<span className="ml-3 flex-1 text-red-600">Log Out</span>

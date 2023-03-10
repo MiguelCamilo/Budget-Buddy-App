@@ -33,7 +33,7 @@ export default function Navbar() {
 							to="/dashboard"
 							className="text-xl font-bold flex items-center lg:ml-2.5"
 						>
-							<span className="flex flex-wrap self-center whitespace-nowrap font-black text-green-500">
+							<span className="flex flex-wrap self-center whitespace-nowrap font-black text-[#051a29] hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300">
 								Budget Buddy
 								<img src={savings} alt="" className="w-8 h-8" />
 							</span>
@@ -49,7 +49,7 @@ export default function Navbar() {
 							<div className="-mb-2">
 								<button>
 									{/* add modal stating feature coming soon */}
-									<FiSettings className="text-2xl hover:text-gray-500" />
+									<FiSettings className="text-2xl hover:text-gray-500 hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300" />
 								</button>
 							</div>
 						</div>

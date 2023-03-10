@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/SideBar";
 import SavingsCard from "./SavingCard/SavingsCard";
@@ -13,7 +14,7 @@ export default function Savings() {
 		e.preventDefault();
 
 		if (goal <= 0 || title.length <= 0) {
-			return alert("Please enter a goal and title.");
+			return toast.error("Please enter a Title and Amount.");
 		}
 
 		const new_savings = { title, goal };
@@ -25,10 +26,20 @@ export default function Savings() {
 			},
 			body: JSON.stringify(new_savings),
 		})
-			.then((res) => res.json())
-			.then(setSavings)
+			.then((res) => {
+				if(!res.ok) {
+					throw new Error("Post Requeset Failed")
+				}
+				return res.json()
+			})
+			.then((data) => {
+				setSavings(data)
+				toast.success("New Saving's Goal Added!", {
+					icon: "🤑"
+				})
+			})
 			.catch((err) => {
-				console.error(err);
+				toast.error(`${err.message}`)
 				alert(err.message);
 			});
 		setTitle("");
@@ -36,10 +47,12 @@ export default function Savings() {
 	};
 
 	useEffect(() => {
-		fetch(`https://api-budget-buddy.web.app/savings`)
-			.then((res) => res.json())
-			.then(setSavings)
-			.catch((err) => alert(err.message));
+		setTimeout(() => {
+			fetch(`https://api-budget-buddy.web.app/savings`)
+				.then((res) => res.json())
+				.then(setSavings)
+				.catch((err) => alert(err.message));
+		}, 800);
 	}, []);
 
 	return (
@@ -49,9 +62,9 @@ export default function Savings() {
 				<div className="flex bg-white pt-16">
 					<Sidebar />
 					{/* entire background */}
-					<div className="h-full w-full bg-gray-100 relative overflow-y-auto lg:ml-64">
+					<div className="h-full w-full bg-gray-100 relative lg:ml-64">
 						<div className="pt-6 px-4 h-screen overflow-y-scroll">
-							<div className="w-full">
+							<div className="w-full overflow-hidden">
 								<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
 									<h3 className="flex justify-center text-lg font-bold">
 										Let's Create a Saving's Goal!
@@ -64,6 +77,7 @@ export default function Savings() {
 													value={title}
 													onChange={(e) => setTitle(e.target.value)}
 													type="text"
+													placeholder="Ex:  New Car"
 													className="block w-full px-4 py-2 mt-2 text-center text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
 												/>
 											</div>
@@ -75,8 +89,8 @@ export default function Savings() {
 													value={goal}
 													onChange={(e) => setGoal(e.target.value)}
 													type="number"
-													placeholder="$"
-													className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring placeholder:text-left text-center"
+													placeholder="Ex:  $100"
+													className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring placeholder:text-center text-center"
 												/>
 											</div>
 										</div>
@@ -85,34 +99,38 @@ export default function Savings() {
 												type="submit"
 												className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
 											>
-												+
+												Create
 											</button>
 										</div>
 									</form>
 								</div>
-								{
-									!savings ? (
-										<p className="text-center mt-2">
-											{/* loading anim */}
-											<BeatLoader
-												color="#45cc55"
-												size={15}
-												speedMultiplier={0.6}
-												className="mt-5"
-											/>
-										</p>
-									) : (
-										savings.map((item) => (
-											<SavingsCard
-												key={item._id}
-												data={item}
-												title={item.title}
-												new_goal={item.goal}
-												setSavings={setSavings}
-											/>
-										))
-									)}
+								{!savings ? (
+									<p className="text-center mt-2">
+										{/* loading anim */}
+										<BeatLoader
+											color="#45cc55"
+											size={15}
+											speedMultiplier={0.6}
+											className="mt-5"
+										/>
+									</p>
+								) : (
+									savings.map((item) => (
+										<SavingsCard
+											key={item._id}
+											data={item}
+											title={item.title}
+											new_goal={item.goal}
+											setSavings={setSavings}
+										/>
+									))
+								)}
 							</div>
+							<footer className="bg-white flex items-center justify-center shadow rounded-lg p-4  xl:p-8 my-6 mx-4">
+								<div className="flex sm:justify-center space-x-6">
+									{/* add linked in icon and github icon and dev portfolio link */}
+								</div>
+							</footer>
 						</div>
 					</div>
 				</div>

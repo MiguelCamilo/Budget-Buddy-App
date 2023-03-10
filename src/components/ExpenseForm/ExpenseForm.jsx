@@ -3,12 +3,12 @@ import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 import BeatLoader from "react-spinners/BeatLoader";
 
 export default function ExpenseForm() {
-    const [expenses, setExpenses] = useState();
+	const [expenses, setExpenses] = useState();
 	const [type, setType] = useState();
 	const [title, setTitle] = useState("");
 	const [amount, setAmount] = useState("");
 
-    const handle_add_expense = (e) => {
+	const handle_add_expense = (e) => {
 		e.preventDefault();
 
 		if (!title && !amount && !date) {
@@ -34,12 +34,13 @@ export default function ExpenseForm() {
 		setAmount("");
 	};
 
-
 	useEffect(() => {
-		fetch(`https://api-budget-buddy.web.app/expenses`)
-			.then((res) => res.json())
-			.then(setExpenses)
-			.catch((err) => alert(err));
+		setTimeout(() => {
+			fetch(`https://api-budget-buddy.web.app/expenses`)
+				.then((res) => res.json())
+				.then(setExpenses)
+				.catch((err) => alert(err));
+		}, 1000);
 	}, []);
 
 	return (
@@ -50,13 +51,12 @@ export default function ExpenseForm() {
 						Expenses
 					</span>
 					<h3 className="text-base font-normal text-gray-500">
-						Enter your Expenses
+						Let's start tracking your expenses by entering an
 					</h3>
 				</div>
 			</div>
 			<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
-
-                {/* form */}
+				{/* form */}
 				<form onSubmit={handle_add_expense}>
 					<div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
 						<div>
@@ -64,24 +64,25 @@ export default function ExpenseForm() {
 								Expense Type
 							</label>
 							<select
-                                value={type}
-							    onChange={(e) => setType(e.target.value)}
+								value={type}
+								required
+								onChange={(e) => setType(e.target.value)}
 								type="select"
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							>
-                                <option value="miscellaneous">Miscellaneous</option>
-                                <option value="food">Food</option>
-                                <option value="other">Other</option>
-                            </select>
+								<option value=""></option>
+								<option value="other">Other</option>
+								<option value="food">Food</option>
+								<option value="miscellaneous">Miscellaneous</option>
+							</select>
 						</div>
 						<div>
-							<label className="text-gray-700">
-								Title
-							</label>
+							<label className="text-gray-700">Title</label>
 							<input
 								value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+								onChange={(e) => setTitle(e.target.value)}
 								type="text"
+								placeholder="Ex:  Food"
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							/>
 						</div>
@@ -91,25 +92,29 @@ export default function ExpenseForm() {
 							</label>
 							<input
 								value={amount}
-                                onChange={(e) => setAmount(e.target.value)}
+								onChange={(e) => setAmount(e.target.value)}
 								type="number"
+								placeholder="Ex:  $20"
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							/>
 						</div>
 					</div>
 					<div className="flex justify-center mt-6">
-						<button type="submit" className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none drop-shadow-xl">
+						<button
+							type="submit"
+							className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none drop-shadow-xl"
+						>
 							+
 						</button>
 					</div>
 				</form>
-                {!expenses ? (
+				{!expenses ? (
 					<p className="text-center mt-2">
 						{/* loading anim */}
 						<BeatLoader
 							color="#d63636"
 							size={15}
-                            speedMultiplier={0.6}
+							speedMultiplier={0.6}
 							className="mt-5"
 						/>
 					</p>
@@ -129,4 +134,3 @@ export default function ExpenseForm() {
 		</div>
 	);
 }
-
