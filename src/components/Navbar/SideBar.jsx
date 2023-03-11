@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { MdSavings, MdForum } from "react-icons/md"
 import { FiLogOut } from "react-icons/fi"
+
+// google auth
 import { signOut } from "firebase/auth";
 import { auth } from "../../App";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+
+export default function Sidebar({ user }) {
+	console.log(user);
 	let navigate = useNavigate()
 
 	const logout = async () => {
@@ -67,6 +71,7 @@ export default function Sidebar() {
 								<FiLogOut className="text-2xl text-red-600"/>
 								<button onClick={() => logout()} className="ml-3 text-red-600">Log Out</button>
 							</div>
+							{/* <p>Welcome {user.email}</p> */}
 						</div>
 					</div>
 				</div>

@@ -1,43 +1,24 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../App";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.svg";
 
-const arrow = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		strokeWidth="1.5"
-		stroke="currentColor"
-		className="w-6 h-6"
-	>
-		<path
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
-		/>
-	</svg>
-);
+// google auth
+import { auth } from "../../App";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
- 
-export default function LoginCard() {
-
-	let navigate = useNavigate()
+export default function LoginCard({ setUser }) {
+	const navigate = useNavigate();
 
 	const handle_login = async () => {
 		
-		try {
-			const provider = new GoogleAuthProvider()
-			await signInWithPopup(auth, provider)
-			toast.success("Successfully Logged In")
-			navigate("/dashboard")
-	
-		} catch(err) {
-			console.error(err)
-		}
-	}
+		const provider = new GoogleAuthProvider();
+		const _user = await signInWithPopup(auth, provider).catch((err) => {
+			toast.error(err);
+		});
+		setUser(_user.user);
+		navigate("/dashboard");
+		toast.success("Successfully Logged In");
+	};
 
 	return (
 		<div className="flex h-screen bg-white rounded-r-xl">
@@ -46,19 +27,23 @@ export default function LoginCard() {
 					Budget Buddy
 				</h1>
 
-				<h2 className="w-[40%] min-w-[300px] m-[24px] text-gray-600 text-lg font-bold leading-8 whitespace-pre-wrap">
+				<h2 className="w-[40%] min-w-[300px] m-[24px] text-gray-500 text-lg font-bold leading-8 whitespace-pre-wrap">
 					Welcome to Budget Buddy! Take control of your finances and achieve
 					your financial goals with our easy-to-use expense tracking and
 					budgeting tools. Let's get started!
 				</h2>
 				<div className="flex justify-start flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0 ml-5">
-					<button onClick={() => handle_login()} className="flex items-center justify-center space-x-3 border p-3 sm:p-0 bg-[#1ACB88] border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-[50%] font-extrabold text-white">
+					<button
+						onClick={handle_login}
+						className="flex items-center justify-center space-x-3 border p-3 sm:p-0 bg-[#1ACB88] border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-[50%] font-extrabold text-white"
+					>
 						<span className="font-normal">Get Started</span>
 					</button>
 				</div>
+				<img src={logo} alt="" className="sm:hidden mt-20" />
 			</div>
-			<div className="hidden md:flex flex-col flex-grow items-center py-9 px-9 pt-0 bg-[#1E8277] bg-contain">
-				<img src={logo} alt="" className=""/>
+			<div className="hidden md:flex flex-row items-center py-9 px-10 pt-0 bg-[#1E8277] bg-contain shrink-1">
+				<img src={logo} alt="" className="" />
 			</div>
 		</div>
 	);
@@ -70,7 +55,7 @@ export default function LoginCard() {
 // </p>
 
 // {/* bottom buttons container */}
-<a></a>;
+//<a></a>;
 
 // 	<div className="p-6 md:p-20">
 // 	{/* content */}
