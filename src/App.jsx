@@ -1,11 +1,16 @@
 import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { getAuth } from "firebase/auth"
+import { initializeApp } from "firebase/app"
 import LoginCard from "./components/LoginCard/LoginCard";
-import Welcome from "./pages/Welcome";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Savings from "./components/Dashboard/Savings";
 import Community from "./components/Dashboard/Community";
 import "./assets/App.css";
+
+import { firebaseConfig } from "./firebase.config"
+const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app);
 
 const AuthContext = createContext(null);
 

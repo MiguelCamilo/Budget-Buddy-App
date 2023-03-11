@@ -2,8 +2,25 @@ import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { MdSavings, MdForum } from "react-icons/md"
 import { FiLogOut } from "react-icons/fi"
+import { signOut } from "firebase/auth";
+import { auth } from "../../App";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
+	let navigate = useNavigate()
+
+	const logout = async () => {
+		try {
+			await signOut(auth);	
+			toast.success("Successfully Logged Out")
+			navigate("/");
+
+		} catch(err) {
+			toast.error(err)
+		}
+	}
+
 	return (
 		<aside
 			className="fixed h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
@@ -45,13 +62,11 @@ export default function Sidebar() {
 							</li>
 						</ul>
 						<div className="space-y-2 pt-2">
-							<a
-								href="#"
-								className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300"
-							>
+							<div
+								className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300">
 								<FiLogOut className="text-2xl text-red-600"/>
-								<span className="ml-3 flex-1 text-red-600">Log Out</span>
-							</a>
+								<button onClick={() => logout()} className="ml-3 text-red-600">Log Out</button>
+							</div>
 						</div>
 					</div>
 				</div>

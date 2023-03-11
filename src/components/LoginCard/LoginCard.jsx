@@ -1,3 +1,7 @@
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../App";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../../assets/logo.svg"
 
 const arrow = (
@@ -17,7 +21,24 @@ const arrow = (
 	</svg>
 );
 
+ 
 export default function LoginCard() {
+
+	let navigate = useNavigate()
+
+	const handle_login = async () => {
+		// e.preventDefault()
+		try {
+			const provider = new GoogleAuthProvider()
+			await signInWithPopup(auth, provider)
+			toast.success("Successfully Logged In")
+			navigate("/dashboard")
+	
+		} catch(err) {
+			console.error(err)
+		}
+	}
+
 	return (
 		<div className="flex h-screen bg-white rounded-r-xl">
 			<div className="flex flex-wrap w-[400px] flex-col justify-start py-9 px-6 pt-0 mt-10">
@@ -31,7 +52,7 @@ export default function LoginCard() {
 					budgeting tools. Let's get started!
 				</h2>
 				<div className="flex justify-start flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0 ml-5">
-					<button className="flex items-center justify-center space-x-3 border p-3 sm:p-0 bg-[#1ACB88] border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-[50%] font-extrabold text-white">
+					<button onClick={() => handle_login()} className="flex items-center justify-center space-x-3 border p-3 sm:p-0 bg-[#1ACB88] border-gray-300 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-0.5 duration-150 w-[50%] font-extrabold text-white">
 						<span className="font-normal">Get Started</span>
 					</button>
 				</div>
