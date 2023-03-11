@@ -27,7 +27,7 @@ export default function LoginCard() {
 	let navigate = useNavigate()
 
 	const handle_login = async () => {
-		// e.preventDefault()
+		
 		try {
 			const provider = new GoogleAuthProvider()
 			await signInWithPopup(auth, provider)
