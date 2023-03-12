@@ -1,7 +1,10 @@
+import AddPostModal from "./CommunityModal/AddPostModal";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
 
 export default function Community() {
+
+
 	return (
 		<div>
 			<Navbar />
@@ -11,9 +14,9 @@ export default function Community() {
 					<div className="pt-6 px-4 h-screen overflow-y-scroll">
 						<div className="flex justify-center items-center w-full overflow-hidden">
 							<div className="flex justify-center bg-white w-[30%] shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
-                                {/* modal button */}
-                                Add Post
-                            </div>                        
+								{/* modal button */}
+                                <AddPostModal />
+							</div>
 						</div>
 					</div>
 				</div>

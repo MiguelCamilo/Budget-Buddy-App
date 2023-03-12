@@ -3,7 +3,7 @@ import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import savings from "/src/assets/images/savings.png";
-import MobileModal from "./MobileModal";
+import MobileDropDown from "./MobileDropDown";
 
 // using useLocation hook to get the current URL path
 export function Header() {
@@ -60,7 +60,7 @@ export default function Navbar() {
 						</div>
 						<a className="md:hidden sm:inline-flex ml-5 text-black hover:bg-gray-100 font-medium rounded-lg text-3xl p-2 text-center items-center mr-3">
 							{/* drop down menu */}
-							<MobileModal/>
+							<MobileDropDown/>
 						</a>
 					</div>
 				</div>

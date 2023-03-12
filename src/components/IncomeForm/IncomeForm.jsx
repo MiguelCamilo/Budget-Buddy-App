@@ -3,7 +3,7 @@ import IncomeFormList from "./IncomeFormList";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import { Chart as ChartJS } from "chart.js";
-import { ArcElement, Tooltip, Legend, DoughnutController } from 'chart.js';
+import { ArcElement, Tooltip, Legend, DoughnutController } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend, DoughnutController);
 
 import { incomeTypes } from "../../data/options";
@@ -16,7 +16,6 @@ export default function IncomeForm() {
 
 	const [chartInstance, setChartInstance] = useState(null);
 
-
 	const handle_add_income = (e) => {
 		e.preventDefault();
 		if (!amount) {
@@ -24,7 +23,7 @@ export default function IncomeForm() {
 		}
 
 		const new_income = {
-            type: type,
+			type: type,
 			date: date,
 			amount: amount,
 		};
@@ -53,7 +52,6 @@ export default function IncomeForm() {
 			.then(setIncome)
 			.catch((err) => console.error(err));
 	}, []);
-
 
 	useEffect(() => {
 		if (income.length > 0) {
@@ -87,114 +85,120 @@ export default function IncomeForm() {
 		}
 	}, [income]);
 
-
 	return (
 		<>
-		<div className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
-			<div className="flex items-center justify-between mb-4">
-				<div className="flex-shrink-0">
-					<h3 className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
-						Income
-					</h3>
-					<h5 className="text-base font-normal text-gray-500">
-						Enter you Income
-					</h5>
-				</div>
-			</div>
-			<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
-				<form onSubmit={handle_add_income} className="">
-					<div className="mb-4 flex flex-col gap-6">
-						<select
-							value={type}
-							onChange={(e) => setType(e.target.value)}
-							label="Type of Income"
-							className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
-						>
-							{incomeTypes.map((type) => (
-								<option key={type} value={type}>
-									{type}
-								</option>
-							))}
-						</select>
-						<input
-							value={date}
-							onChange={(e) => setDate(e.target.value)}
-							size="lg"
-							type="date"
-							className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
-						/>
-						<input
-							value={amount}
-							onChange={(e) => setAmount(e.target.value)}
-							type="number"
-							size="lg"
-							className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
-						/>
+			<div className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+				<div className="flex items-center justify-between mb-4">
+					<div className="flex-shrink-0">
+						<h3 className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
+							Income
+						</h3>
+						<h5 className="text-base font-normal text-gray-500">
+							Enter you Income
+						</h5>
 					</div>
-					<button
-						type="submit"
-						className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
-					>
-						+
-					</button>
-				</form>
-				{!income ? (
-					<p className="text-center mt-2">
-						<BeatLoader
-							color="#45cc55"
-							size={15}
-							speedMultiplier={0.6}
-							className="mt-5"
-						/>
-					</p>
-				) : (
-					income.map((data) => (
-						<IncomeFormList
-							key={data._id}
-							data={data}
-							date={data.date}
-							amount={data.amount}
-							setIncome={setIncome}
-						/>
-					))
-				)}
-			</section>
-		</div>
-		
-		<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-			<div className="mb-4 flex items-center justify-between">
-				<div>
-					<h3 className="text-xl font-bold text-gray-900 mb-2">
-						Income Chart
-					</h3>
-					<span className="text-base font-normal text-gray-500">
-						View your Income in an easier format
-					</span>
 				</div>
-				<div className="flex-shrink-0">
-					<a
-						href="#"
-						className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2"
-					>
-						{/* change this to a modal */}
-					</a>
-				</div>
+				<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
+					<form onSubmit={handle_add_income} className="">
+						<div className="mb-4 flex flex-col gap-6">
+							<label className="text-gray-700">Income Type</label>
+							<select
+								value={type}
+								onChange={(e) => setType(e.target.value)}
+								required
+								className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
+							>
+								{incomeTypes.map((type) => (
+									<option key={type} value={type}>
+										{type}
+									</option>
+								))}
+							</select>
+							<input
+								value={date}
+								onChange={(e) => setDate(e.target.value)}
+								size="lg"
+								type="date"
+								className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
+							/>
+							<label className="text-gray-700">Amount</label>
+							<input
+								value={amount}
+								onChange={(e) => setAmount(e.target.value)}
+								type="number"
+								size="lg"
+								placeholder="Ex:  $100"
+								className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring text-center placeholder:text-center"
+							/>
+						</div>
+						<button
+							type="submit"
+							className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
+						>
+							+
+						</button>
+					</form>
+					{!income ? (
+						<p className="text-center mt-2">
+							<BeatLoader
+								color="#45cc55"
+								size={15}
+								speedMultiplier={0.6}
+								className="mt-5"
+							/>
+						</p>
+					) : (
+						income.map((data) => (
+							<IncomeFormList
+								key={data._id}
+								data={data}
+								date={data.date}
+								amount={data.amount}
+								setIncome={setIncome}
+							/>
+						))
+					)}
+				</section>
 			</div>
-			<div className="flex flex-col mt-8">
-				<div className="overflow-x-auto rounded-lg">
-					<div className="align-middle inline-block min-w-full">
-						<div className="h-[18rem] w-[18rem]  md:h-[30rem] md:w-[30rem] mx-1/2">
-							<div>
-							{!income
-								?<h2>Loading...</h2>
-								: <canvas id="myDoughnutChart2" key="myDoughnutChart2"></canvas>
-							}
+
+			<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+				<div className="mb-4 flex items-center justify-between">
+					<div>
+						<h3 className="text-xl font-bold text-gray-900 mb-2">
+							Income Chart
+						</h3>
+						<span className="text-base font-normal text-gray-500">
+							View your Income in an easier format
+						</span>
+					</div>
+					<div className="flex-shrink-0">
+						<a
+							href="#"
+							className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2"
+						>
+							{/* change this to a modal */}
+						</a>
+					</div>
+				</div>
+				<div className="flex flex-col mt-8">
+					<div className="overflow-x-auto rounded-lg">
+						<div className="align-middle inline-block min-w-full">
+							<div className="h-[18rem] w-[18rem]  md:h-[30rem] md:w-[30rem] mx-1/2">
+								<div>
+									{!income ? (
+										<h2>Loading...</h2>
+									) : (
+										<canvas
+											id="myDoughnutChart2"
+											key="myDoughnutChart2"
+										></canvas>
+									)}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</>
 	);
 }

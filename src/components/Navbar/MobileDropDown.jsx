@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { auth } from "../../App";
 
-export default function MobileModal() {
+export default function MobileDropDown() {
 	let navigate = useNavigate();
 	const user = auth.currentUser;
 
@@ -26,30 +26,30 @@ export default function MobileModal() {
 
 	return (
 		<>
-			<Dropdown label="Menu" color="green">
+			<Dropdown label="Menu" color="green" dismissOnClick={true}>
 				<Dropdown.Header>
 					{user && user.displayName && (
 						<span className="text-sm">{user.displayName}</span>
 					)}
 				</Dropdown.Header>
-				<Dropdown.Item>
-					<Link to="/dashboard" className="flex flex-row">
+				<Link to="/dashboard" className="flex flex-row">
+					<Dropdown.Item>
 						<HiChartPie className="mr-1 mt-0.5" />
 						Dashboard
-					</Link>
-				</Dropdown.Item>
-				<Dropdown.Item>
-					<Link to="/savings" className="flex flex-row">
+					</Dropdown.Item>
+				</Link>
+				<Link to="/savings" className="flex flex-row">
+					<Dropdown.Item>
 						<MdSavings className="mr-1 mt-0.5" />
 						Savings
-					</Link>
-				</Dropdown.Item>
-				<Dropdown.Item>
-					<Link to="/community" className="flex flex-row">
+					</Dropdown.Item>
+				</Link>
+				<Link to="/community" className="flex flex-row">
+					<Dropdown.Item>
 						<MdForum className="mr-1 mt-0.5" />
 						Forum
-					</Link>
-				</Dropdown.Item>
+					</Dropdown.Item>
+				</Link>
 				<Dropdown.Divider />
 				<Dropdown.Item onClick={() => logout()}>
 					<FiLogOut className="mr-1 text-red-600" />
