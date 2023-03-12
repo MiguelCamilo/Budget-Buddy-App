@@ -51,7 +51,7 @@ export default function ExpenseForm() {
 						Expenses
 					</span>
 					<h3 className="text-base font-normal text-gray-500">
-						Let's start tracking your expenses by entering an
+						Track your expenses easily by entering them in the form below
 					</h3>
 				</div>
 			</div>
