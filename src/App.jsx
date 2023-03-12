@@ -14,7 +14,7 @@ import { firebaseConfig } from "../firebase.config";
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 function App() {
 	const [user, setUser] = useState();

@@ -2,11 +2,14 @@ import { toast } from "react-toastify";
 import logo from "../../assets/logo.svg";
 
 // google auth
-import { auth } from "../../App";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../App";
+import { useContext } from "react";
+import { auth } from "../../App";
 
-export default function LoginCard({ setUser }) {
+export default function LoginCard() {
+	const { setUser } = useContext(AuthContext)
 	const navigate = useNavigate();
 
 	const handle_login = async () => {
