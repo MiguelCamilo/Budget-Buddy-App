@@ -9,7 +9,7 @@ export default function Dashboard() {
 		<>
 			<div>
 				<Navbar />
-				<div className="flex bg-white pt-16">
+				<div className="flex bg-white pt-16 md:pt-14">
 					<Sidebar />
 					<div className="h-full w-full bg-gray-100 relative overflow-y-auto lg:ml-64">
 						<div className="pt-6 px-4">

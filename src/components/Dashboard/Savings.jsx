@@ -47,19 +47,19 @@ export default function Savings() {
 	};
 
 	useEffect(() => {
-		setTimeout(() => {
+		// setTimeout(() => {
 			fetch(`https://api-budget-buddy.web.app/savings`)
 				.then((res) => res.json())
 				.then(setSavings)
 				.catch((err) => alert(err.message));
-		}, 800);
+		// }, 800);
 	}, []);
 
 	return (
 		<>
 			<div>
 				<Navbar />
-				<div className="flex bg-white pt-16">
+				<div className="flex bg-white pt-16 md:pt-14">
 					<Sidebar />
 					{/* entire background */}
 					<div className="h-full w-full bg-gray-100 relative lg:ml-64">
