@@ -2,11 +2,20 @@ import { useState, useEffect } from "react";
 import IncomeFormList from "./IncomeFormList";
 import BeatLoader from "react-spinners/BeatLoader";
 
+import { Chart as ChartJS } from "chart.js";
+import { ArcElement, Tooltip, Legend, DoughnutController } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend, DoughnutController);
+
+import { incomeTypes } from "../../data/options";
+
 export default function IncomeForm() {
-	const [income, setIncome] = useState();
+	const [income, setIncome] = useState([]);
 	const [date, setDate] = useState("");
 	const [amount, setAmount] = useState("");
 	const [type, setType] = useState();
+
+	const [chartInstance, setChartInstance] = useState(null);
+
 
 	const handle_add_income = (e) => {
 		e.preventDefault();
@@ -45,7 +54,42 @@ export default function IncomeForm() {
 			.catch((err) => console.error(err));
 	}, []);
 
+
+	useEffect(() => {
+		if (income.length > 0) {
+			if (chartInstance) {
+				chartInstance.destroy();
+			}
+			const ctx = document.getElementById("myDoughnutChart2");
+			setChartInstance(
+				new ChartJS(ctx, {
+					type: "doughnut",
+					data: {
+						labels: income.map((item) => item.type),
+						datasets: [
+							{
+								label: "Income $",
+								data: income.map((item) => item.amount),
+								backgroundColor: [
+									"#FF6384",
+									"#36A2EB",
+									"#FFCE56",
+									"#1D7A46",
+									"#A2423D",
+									"#C0B283",
+									"#655643",
+								],
+							},
+						],
+					},
+				})
+			);
+		}
+	}, [income]);
+
+
 	return (
+		<>
 		<div className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
 			<div className="flex items-center justify-between mb-4">
 				<div className="flex-shrink-0">
@@ -56,12 +100,6 @@ export default function IncomeForm() {
 						Enter you Income
 					</h5>
 				</div>
-				<a
-					href="#"
-					className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2"
-				>
-					{/* change this to a modal */}Modal
-				</a>
 			</div>
 			<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
 				<form onSubmit={handle_add_income} className="">
@@ -72,8 +110,11 @@ export default function IncomeForm() {
 							label="Type of Income"
 							className="border border-gray-200 rounded-md p-2 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
 						>
-							<option>Work</option>
-							<option>Other</option>
+							{incomeTypes.map((type) => (
+								<option key={type} value={type}>
+									{type}
+								</option>
+							))}
 						</select>
 						<input
 							value={date}
@@ -119,5 +160,41 @@ export default function IncomeForm() {
 				)}
 			</section>
 		</div>
+		
+		<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+			<div className="mb-4 flex items-center justify-between">
+				<div>
+					<h3 className="text-xl font-bold text-gray-900 mb-2">
+						Income Chart
+					</h3>
+					<span className="text-base font-normal text-gray-500">
+						View your Income in an easier format
+					</span>
+				</div>
+				<div className="flex-shrink-0">
+					<a
+						href="#"
+						className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2"
+					>
+						{/* change this to a modal */}
+					</a>
+				</div>
+			</div>
+			<div className="flex flex-col mt-8">
+				<div className="overflow-x-auto rounded-lg">
+					<div className="align-middle inline-block min-w-full">
+						<div className="h-[18rem] w-[18rem]  md:h-[30rem] md:w-[30rem] mx-1/2">
+							<div>
+							{!income
+								?<h2>Loading...</h2>
+								: <canvas id="myDoughnutChart2" key="myDoughnutChart2"></canvas>
+							}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</>
 	);
 }

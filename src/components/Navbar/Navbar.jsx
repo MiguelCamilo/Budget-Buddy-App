@@ -1,8 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { BiMenuAltRight } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import savings from "/src/assets/images/savings.png";
+import MobileModal from "./MobileModal";
 
 // using useLocation hook to get the current URL path
 export function Header() {
@@ -20,6 +21,10 @@ export function Header() {
 	}
 
 	return <h1>{path_name}</h1>;
+}
+
+const handle_settings = () => {
+	toast.warning("🚧 Feature Coming Soon! 🚧")
 }
 
 export default function Navbar() {
@@ -47,7 +52,7 @@ export default function Navbar() {
 					<div className="flex items-center">
 						<div className="hidden lg:flex items-center">
 							<div className="-mb-2">
-								<button>
+								<button onClick={handle_settings}>
 									{/* add modal stating feature coming soon */}
 									<FiSettings className="text-2xl hover:text-gray-500 hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300" />
 								</button>
@@ -55,7 +60,7 @@ export default function Navbar() {
 						</div>
 						<a className="md:hidden sm:inline-flex ml-5 text-black hover:bg-gray-100 font-medium rounded-lg text-3xl p-2 text-center items-center mr-3">
 							{/* drop down menu */}
-							<BiMenuAltRight />
+							<MobileModal/>
 						</a>
 					</div>
 				</div>
