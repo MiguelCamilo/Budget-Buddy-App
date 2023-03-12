@@ -1,6 +1,8 @@
 import { AiFillHome } from "react-icons/ai";
+import { HiChartPie } from "react-icons/hi"
 import { MdSavings, MdForum } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
+import { Avatar } from "flowbite-react";
 
 // google auth
 import { signOut } from "firebase/auth";
@@ -37,7 +39,7 @@ export default function Sidebar() {
 									to="/dashboard"
 									className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
 								>
-									<AiFillHome className="text-2xl" />
+									<HiChartPie className="text-2xl" />
 									<span className="ml-3">Dashboard</span>
 								</Link>
 							</li>
@@ -68,15 +70,19 @@ export default function Sidebar() {
 						<div className="flex justify-center mb-5">
 							{/* an expression is used to make sure that user.photoURL property is truthy */}
 							{user && user.photoURL && (
-								<img
-									src={user.photoURL}
+								<Avatar
+									img={user.photoURL}
+									size="lg"
+									status="online"
 									alt="Profile Picture"
 									className="rounded-3xl"
 								/>
 							)}
 						</div>
 						{user && user.displayName && (
-							<p className="flex justify-center font-bold mt-3">Welcome, {user.displayName}!</p>
+							<p className="flex justify-center font-bold mt-3">
+								Welcome, {user.displayName}!
+							</p>
 						)}
 						<div className="text-base text-gray-900 font-normal rounded-lg flex justify-center mx-8 items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-2xl duration-300">
 							<FiLogOut className="text-2xl text-red-600" />
@@ -84,7 +90,7 @@ export default function Sidebar() {
 								onClick={() => logout()}
 								className="ml-3 text-red-600 font-bold"
 							>
-								Log Out
+								Sign Out
 							</button>
 						</div>
 					</div>

@@ -1,15 +1,12 @@
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
-import ExpenseChart from "../ChartJS/ExpenseChart";
 import IncomeForm from "../IncomeForm/IncomeForm";
-import IncomeChart from "../ChartJS/IncomeChart";
 import MiddleBarChart from "../ChartJS/MiddleBarChart";
 
 export default function Dashboard() {
 	return (
 		<>
-			{/* component */}
 			<div>
 				<Navbar />
 				<div className="flex bg-white pt-16">
@@ -19,16 +16,11 @@ export default function Dashboard() {
 							<div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
 								{/* expense form */}
 								<ExpenseForm />
-								<ExpenseChart />
 							</div>
 							{/* add middle bar charts */}
 							<MiddleBarChart />
 							<div className="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
-								{/* income form */}
 								<IncomeForm />
-								<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-									<IncomeChart />
-								</div>
 							</div>
 						</div>
 

@@ -9,7 +9,7 @@ import "./assets/App.css";
 // google auth
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../firebase.config";
+import { firebaseConfig } from "./firebase.config";
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
