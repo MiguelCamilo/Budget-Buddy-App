@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Label, TextInput, Textarea, Button } from "flowbite-react";
+import { Label, TextInput, Textarea } from "flowbite-react";
 import { toast } from "react-toastify";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -41,87 +41,83 @@ export default function Community() {
 	}, []);
 
 	return (
-        <>
-		<div>
-			<Navbar />
-			<div className="flex bg-white pt-16 md:pt-14">
-				<Sidebar />
-				<div className="h-full w-full bg-gray-100 relative lg:ml-64">
-					<div className="pt-6 px-4 h-screen overflow-y-scroll">
-						<div className="flex justify-center items-center w-full overflow-hidden">
-							<div className="flex justify-center bg-white w-full shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
-								<div className="w-full">
-									<h2 className="text-2xl font-bold text-center">
-										Add a new post
-									</h2>
-									<form onSubmit={handle_add_post}>
-										<div className="mb-2 block">
-											<Label htmlFor="small" value="Title of Post" />
-										</div>
-										<TextInput
-											id="small"
-											placeholder="Ex: How to budget?"
-											className="capitalize"
-											type="text"
-											sizing="sm"
-											value={title}
-											onChange={(e) => setTitle(e.target.value)}
-										/>
-										<div id="textarea">
+		<>
+			<div>
+				<Navbar />
+				<div className="flex bg-white pt-16 md:pt-14">
+					<Sidebar />
+					<div className="h-full w-full bg-gray-100 relative lg:ml-64">
+						<div className="pt-6 px-4 h-screen overflow-y-scroll">
+							<div className="flex justify-center items-center w-full overflow-hidden">
+								<div className="flex justify-center bg-white w-full shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
+									<div className="w-full">
+										<h2 className="text-2xl font-bold text-center">
+											Add a new post
+										</h2>
+										<form onSubmit={handle_add_post}>
 											<div className="mb-2 block">
-												<Label htmlFor="comment" value="Post" />
+												<Label htmlFor="small" value="Title of Post" />
 											</div>
-											<Textarea
-												id="comment"
-												placeholder="What will this topic be about?"
-												required={true}
-												rows={4}
-												value={info}
-												onChange={(e) => setInfo(e.target.value)}
+											<TextInput
+												id="small"
+												placeholder="Ex: How to budget?"
+												className="capitalize"
+												type="text"
+												sizing="sm"
+												value={title}
+												onChange={(e) => setTitle(e.target.value)}
 											/>
-										</div>
-										<div className="flex justify-center mt-4">
-											<button
-												className="bg-[#FAB76A] w-[30%] hover:bg-[#f8ca95] p-2 rounded-lg text-white font-semibold"
-												type="submit"
-											>
-												+ Start a New Topic
-											</button>
-										</div>
-									</form>
+											<div id="textarea">
+												<div className="mb-2 block">
+													<Label htmlFor="comment" value="Post" />
+												</div>
+												<Textarea
+													id="comment"
+													placeholder="What will this topic be about?"
+													required={true}
+													rows={4}
+													value={info}
+													onChange={(e) => setInfo(e.target.value)}
+												/>
+											</div>
+											<div className="flex justify-center mt-4">
+												<button
+													className="bg-[#FAB76A] w-[30%] hover:bg-[#f8ca95] p-2 rounded-lg text-white font-semibold"
+													type="submit"
+												>
+													+ Start a New Topic
+												</button>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-						</div>
-						{/* map through post */}
+							{/* map through post */}
 
-						{!post ? (
-							<p className="text-center mt-2">
-								<BeatLoader
-									color="#FAB76A"
-									size={15}
-									speedMultiplier={0.6}
-									className="mt-5"
-								/>
-							</p>
-						) : (
-							post.map((data) => (
-								<div key={data._id}>
-									<CommunityCard
-										data={data}
-										title={data.title}
-										info={data.info}                                        
+							{!post ? (
+								<p className="text-center mt-2">
+									<BeatLoader
+										color="#FAB76A"
+										size={15}
+										speedMultiplier={0.6}
+										className="mt-5"
 									/>
-								</div>
-							))
-						)}
-					</div>  
-                    <footer className="bg-white flex items-center justify-center shadow rounded-lg p-4  xl:p-8 my-6 mx-4">
-							<div className="flex sm:justify-center space-x-6">
-							</div>
-						</footer>                  
+								</p>
+							) : (
+								post.map((data) => (
+									<div key={data._id}>
+										<CommunityCard
+											data={data}
+											title={data.title}
+											info={data.info}
+										/>
+									</div>
+								))
+							)}
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-        </>
+			</div>        
+		</>
 	);
 }

@@ -126,12 +126,7 @@ export default function Savings() {
 									))
 								)}
 							</div>
-							<footer className="bg-white flex items-center justify-center shadow rounded-lg p-4  xl:p-8 my-6 mx-4">
-								<div className="flex sm:justify-center space-x-6">
-									{/* add linked in icon and github icon and dev portfolio link */}
-								</div>
-							</footer>
-						</div>
+						</div>						
 					</div>
 				</div>
 			</div>

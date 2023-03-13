@@ -1,3 +1,7 @@
+import { FaGithubSquare } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { BsLink45Deg } from "react-icons/bs";
+
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
@@ -23,7 +27,22 @@ export default function Dashboard() {
 						</div>
 						{/* change this footer to a component and add my social media links */}
 						<footer className="bg-white flex items-center justify-center shadow rounded-lg p-4  xl:p-8 my-6 mx-4">
-							<div className="flex sm:justify-center space-x-6">
+							<div className="flex sm:justify-center space-x-10">
+								<a target="_blank" href="https://github.com/MiguelCamilo">
+									<FaGithubSquare className="text-2xl hover:text-gray-700" />
+								</a>
+								<a
+									target="_blank"
+									href="https://www.linkedin.com/in/miguel-camilo/"
+								>
+									<FaLinkedin className="text-2xl hover:text-gray-700" />
+								</a>
+								<a
+									target="_blank"
+									href="https://bocacode.com/candidates/software-engineer/miguel-camilo"
+								>
+									<BsLink45Deg className="text-2xl hover:text-gray-700" />
+								</a>
 							</div>
 						</footer>
 					</div>
