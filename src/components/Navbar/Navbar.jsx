@@ -58,7 +58,7 @@ export default function Navbar() {
 								</button>
 							</div>
 						</div>
-						<a className="md:hidden sm:inline-flex ml-5 text-black hover:bg-gray-100 font-medium rounded-lg text-3xl p-2 text-center items-center mr-3">
+						<a className="lg:hidden sm:inline-flex ml-5 text-black hover:bg-gray-100 font-medium rounded-lg text-3xl p-2 text-center items-center mr-3">
 							{/* drop down menu */}
 							<MobileDropDown/>
 						</a>

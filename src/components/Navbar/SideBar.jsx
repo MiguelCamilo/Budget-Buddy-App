@@ -1,4 +1,3 @@
-import { AiFillHome } from "react-icons/ai";
 import { HiChartPie } from "react-icons/hi"
 import { MdSavings, MdForum } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";

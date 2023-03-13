@@ -4,7 +4,7 @@ import { GiPiggyBank } from "react-icons/gi";
 import { toast } from "react-toastify";
 
 export default function SavingsCard({ data, title, new_goal, setSavings }) {
-	const { _id } = data; // this will be used when we create  delete req
+	const { _id } = data; 
 
 	const [progress, setProgress] = useState(() => {
 		return Number(localStorage.getItem(`progress-${_id}`)) || 0;
