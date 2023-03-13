@@ -41,6 +41,7 @@ export default function Community() {
 	}, []);
 
 	return (
+        <>
 		<div>
 			<Navbar />
 			<div className="flex bg-white pt-16 md:pt-14">
@@ -113,9 +114,14 @@ export default function Community() {
 								</div>
 							))
 						)}
-					</div>
+					</div>  
+                    <footer className="bg-white flex items-center justify-center shadow rounded-lg p-4  xl:p-8 my-6 mx-4">
+							<div className="flex sm:justify-center space-x-6">
+							</div>
+						</footer>                  
 				</div>
 			</div>
 		</div>
+        </>
 	);
 }
