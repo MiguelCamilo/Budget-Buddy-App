@@ -15,7 +15,7 @@ export default function Dashboard() {
 				<Navbar />
 				<div className="flex bg-white pt-16 md:pt-14">
 					<Sidebar />
-					<div className="h-full w-full bg-gray-100 relative overflow-y-auto lg:ml-64">
+					<div className="h-full w-full bg-[#F0FBF3] relative overflow-y-auto lg:ml-64">
 						<div className="pt-6 px-4">
 							<div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
 								<ExpenseForm />

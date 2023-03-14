@@ -93,10 +93,10 @@ export default function ExpenseForm() {
 		<ScrollReveal.div delay={1} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
 			<div className="flex items-center justify-between mb-4">
 				<div className="flex-shrink-1">
-					<ScrollReveal.h2 delay={1.5} className="text-2xl sm:text-3xl leading-none font-black  text-gray-900">
+					<ScrollReveal.h2 delay={1.2} className="text-2xl sm:text-3xl leading-none font-black  text-gray-900">
 						Expenses
 					</ScrollReveal.h2>
-					<ScrollReveal.h3 delay={2} className="text-base font-normal text-gray-500">
+					<ScrollReveal.h3 delay={1.4} className="text-base font-normal text-gray-500">
 						Track your expenses easily by entering them in the form below
 					</ScrollReveal.h3>
 				</div>
@@ -104,7 +104,7 @@ export default function ExpenseForm() {
 			<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
 				{/* form */}
 				<form onSubmit={handle_add_expense}>
-					<ScrollReveal.div delay={2} animation="slide-in-bottom" className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+					<ScrollReveal.div delay={1.6} animation="slide-in-bottom" className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
 						<div>
 							<label className="text-gray-700 " htmlFor="username">
 								Expense Type
@@ -146,7 +146,7 @@ export default function ExpenseForm() {
 							/>
 						</div>
 					</ScrollReveal.div>
-					<ScrollReveal.div delay={3} className="flex justify-center mt-6">
+					<ScrollReveal.div delay={1.8} className="flex justify-center mt-6">
 						<button
 							type="submit"
 							className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none drop-shadow-xl"
@@ -167,7 +167,7 @@ export default function ExpenseForm() {
 					</p>
 				) : (
 					expenses.map((expense) => (
-						<ScrollReveal.div delay={3} key={expense._id}>
+						<ScrollReveal.div delay={2} key={expense._id}>
 							<ExpenseFormList
 								data={expense}
 								title={expense.title}
@@ -181,13 +181,13 @@ export default function ExpenseForm() {
 		</ScrollReveal.div>
 
 		{/* expense chart */}
-		<ScrollReveal.div delay={1.5} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8">
+		<ScrollReveal.div delay={2.2} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8">
 		<div className="mb-4 flex items-center justify-between">
 				<div>
-					<ScrollReveal.h3 delay={2} className="text-xl font-bold text-gray-900 mb-2">
+					<ScrollReveal.h3 delay={2.4} className="text-xl font-bold text-gray-900 mb-2">
 						Expense Chart
 					</ScrollReveal.h3>
-					<ScrollReveal.div delay={2.5} className="text-base font-normal text-gray-500">
+					<ScrollReveal.div delay={2.6} className="text-base font-normal text-gray-500">
 						View your Expenses in an easier format
 					</ScrollReveal.div>
 				</div>

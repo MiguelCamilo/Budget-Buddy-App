@@ -56,7 +56,7 @@ export default function Sidebar() {
 									to="/community"
 									className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
 								>
-									<MdForum className="text-2xl" />
+									<MdForum className="text-2xl " />
 									<span className="ml-3 flex-1 whitespace-nowrap">
 										Community Forum
 									</span>

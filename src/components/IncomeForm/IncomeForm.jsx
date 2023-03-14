@@ -89,7 +89,7 @@ export default function IncomeForm() {
 
 	return (
 		<>
-			<ScrollReveal.div threshold={0} animation="slide-in-bottom" className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+			<ScrollReveal.div threshold={0} delay={2.5} animation="fade-in" className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
 				<div className="flex items-center justify-between mb-4">
 					<div className="flex-shrink-0">
 						<h3 className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
@@ -135,7 +135,7 @@ export default function IncomeForm() {
 						</div>
 						<button
 							type="submit"
-							className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
+							className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#00D884] rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
 						>
 							+
 						</button>
@@ -163,7 +163,7 @@ export default function IncomeForm() {
 				</section>
 			</ScrollReveal.div>
 
-			<ScrollReveal.div threshold={0} animation="slide-in-bottom" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+			<ScrollReveal.div threshold={0} delay={3} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
 				<div className="mb-4 flex items-center justify-between">
 					<div>
 						<h3 className="text-xl font-bold text-gray-900 mb-2">

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { ScrollReveal } from "reveal-on-scroll-react";
+
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/SideBar";
 import SavingsCard from "./SavingCard/SavingsCard";
@@ -42,7 +44,7 @@ export default function Savings() {
 				toast.error(`${err.message}`)
 				alert(err.message);
 			});
-		setTitle("");
+		setTitle(""); 
 		setGoal("");
 	};
 
@@ -62,10 +64,10 @@ export default function Savings() {
 				<div className="flex bg-white pt-16 md:pt-14">
 					<Sidebar />
 					{/* entire background */}
-					<div className="h-full w-full bg-gray-100 relative lg:ml-64">
+					<div className="h-full w-full bg-[#F0FBF3] relative lg:ml-64">
 						<div className="pt-6 px-4 h-screen overflow-y-scroll">
 							<div className="w-full overflow-hidden">
-								<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4">
+								<div className="bg-white rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4 shadow-2xl">
 									<h3 className="flex justify-center text-lg font-bold">
 										Let's Create a Saving's Goal!
 									</h3>
@@ -78,7 +80,7 @@ export default function Savings() {
 													onChange={(e) => setTitle(e.target.value)}
 													type="text"
 													placeholder="Ex:  New Car"
-													className="block w-full px-4 py-2 mt-2 text-center text-gray-700 bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
+													className="block w-full px-4 py-2 mt-2 text-center text-[#073E38] bg-white border border-gray-200 rounded-md focus:border-green-500 focus:ring-green-500 focus:ring-opacity-40 dark:focus:border-green-500 focus:outline-none focus:ring"
 												/>
 											</div>
 											<div>
@@ -97,7 +99,7 @@ export default function Savings() {
 										<div className="flex justify-center mt-6">
 											<button
 												type="submit"
-												className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
+												className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#00D884] rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
 											>
 												Create
 											</button>
@@ -116,13 +118,16 @@ export default function Savings() {
 									</p>
 								) : (
 									savings.map((item) => (
-										<SavingsCard
+										<ScrollReveal.div threshold={0} animation="slide-in-bottom" >
+											<SavingsCard
 											key={item._id}
 											data={item}
 											title={item.title}
 											new_goal={item.goal}
 											setSavings={setSavings}
 										/>
+										</ScrollReveal.div>
+										
 									))
 								)}
 							</div>
