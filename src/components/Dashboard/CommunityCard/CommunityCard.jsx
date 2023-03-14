@@ -30,7 +30,7 @@ export default function CommunityCard({ title, info, data }) {
 
 	return (
 		<>
-			<div className="w-full grid grid-cols-2 mt-10">
+			<div className="w-full grid grid-cols-1 mt-10">
 				<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-4 ">
 					<Card>
 						<div className="flex justify-end space-x-4">
