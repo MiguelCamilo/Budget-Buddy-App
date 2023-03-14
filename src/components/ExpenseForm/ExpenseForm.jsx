@@ -187,7 +187,7 @@ export default function ExpenseForm() {
 					<ScrollReveal.h3 delay={2.4} className="text-xl font-bold text-gray-900 mb-2">
 						Expense Chart
 					</ScrollReveal.h3>
-					<ScrollReveal.div delay={2.6} className="text-base font-normal text-gray-500">
+					<ScrollReveal.div delay={2.2} className="text-base font-normal text-gray-500">
 						View your Expenses in an easier format
 					</ScrollReveal.div>
 				</div>
