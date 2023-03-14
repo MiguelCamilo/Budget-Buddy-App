@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { ScrollReveal } from "reveal-on-scroll-react";
+
 
 import ExpenseFormList from "../ExpenseForm/ExpenseFormList";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -88,21 +90,21 @@ export default function ExpenseForm() {
 
 	return (
 		<>
-		<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
+		<ScrollReveal.div delay={1} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
 			<div className="flex items-center justify-between mb-4">
 				<div className="flex-shrink-1">
-					<span className="text-2xl sm:text-3xl leading-none font-black  text-gray-900">
+					<ScrollReveal.h2 delay={1.5} className="text-2xl sm:text-3xl leading-none font-black  text-gray-900">
 						Expenses
-					</span>
-					<h3 className="text-base font-normal text-gray-500">
+					</ScrollReveal.h2>
+					<ScrollReveal.h3 delay={2} className="text-base font-normal text-gray-500">
 						Track your expenses easily by entering them in the form below
-					</h3>
+					</ScrollReveal.h3>
 				</div>
 			</div>
 			<section className="max-w-4xl p-6 pb mx-auto bg-white rounded-md shadow-md ">
 				{/* form */}
 				<form onSubmit={handle_add_expense}>
-					<div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+					<ScrollReveal.div delay={2} animation="slide-in-bottom" className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
 						<div>
 							<label className="text-gray-700 " htmlFor="username">
 								Expense Type
@@ -143,15 +145,15 @@ export default function ExpenseForm() {
 								className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-red-500 focus:ring-red-500 focus:ring-opacity-40 dark:focus:border-red-500 focus:outline-none focus:ring"
 							/>
 						</div>
-					</div>
-					<div className="flex justify-center mt-6">
+					</ScrollReveal.div>
+					<ScrollReveal.div delay={3} className="flex justify-center mt-6">
 						<button
 							type="submit"
 							className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none drop-shadow-xl"
 						>
 							+
 						</button>
-					</div>
+					</ScrollReveal.div>
 				</form>
 				{!expenses ? (
 					<p className="text-center mt-2">
@@ -165,29 +167,29 @@ export default function ExpenseForm() {
 					</p>
 				) : (
 					expenses.map((expense) => (
-						<div key={expense._id}>
+						<ScrollReveal.div delay={3} key={expense._id}>
 							<ExpenseFormList
 								data={expense}
 								title={expense.title}
 								amount={expense.amount}
 								setExpenses={setExpenses}
 							/>
-						</div>
+						</ScrollReveal.div>
 					))
 				)}
 			</section>
-		</div>
+		</ScrollReveal.div>
 
 		{/* expense chart */}
-		<div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+		<ScrollReveal.div delay={1.5} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8">
 		<div className="mb-4 flex items-center justify-between">
 				<div>
-					<h3 className="text-xl font-bold text-gray-900 mb-2">
+					<ScrollReveal.h3 delay={2} className="text-xl font-bold text-gray-900 mb-2">
 						Expense Chart
-					</h3>
-					<span className="text-base font-normal text-gray-500">
+					</ScrollReveal.h3>
+					<ScrollReveal.div delay={2.5} className="text-base font-normal text-gray-500">
 						View your Expenses in an easier format
-					</span>
+					</ScrollReveal.div>
 				</div>
 				<div className="flex-shrink-0">
 					{/* modal */}
@@ -207,7 +209,7 @@ export default function ExpenseForm() {
 					</div>
 				</div>
 			</div>
-			</div>
+			</ScrollReveal.div>
 		</>
 	);
 }

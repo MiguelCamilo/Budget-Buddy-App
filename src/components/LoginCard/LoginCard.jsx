@@ -1,3 +1,4 @@
+import { ScrollReveal } from "reveal-on-scroll-react";
 import { toast } from "react-toastify";
 import logo from "../../assets/logo.svg";
 
@@ -26,15 +27,15 @@ export default function LoginCard() {
 	return (
 		<div className="flex h-screen bg-white rounded-r-xl">
 			<div className="flex flex-wrap w-[400px] flex-col justify-start py-9 px-6 pt-0 mt-10">
-				<h1 className="text-[48px] font-black text-center text-[#00D884] italic tracking-tighter">
+				<ScrollReveal.h1 delay={1}  easing="anticipate" className="text-[48px] font-black text-center text-[#00D884] italic tracking-tighter">
 					Budget Buddy
-				</h1>
+				</ScrollReveal.h1>
 
-				<h2 className="w-[40%] min-w-[300px] m-[24px] text-gray-500 text-lg font-bold leading-8 whitespace-pre-wrap">
+				<ScrollReveal.h2 delay={1}  easing="easeOut"   className="w-[40%] min-w-[300px] m-[24px] text-gray-500 text-lg font-bold leading-8 whitespace-pre-wrap">
 					Welcome to Budget Buddy! Take control of your finances and achieve
 					your financial goals with our easy-to-use expense tracking and
 					budgeting tools. Let's get started!
-				</h2>
+				</ScrollReveal.h2>
 				<div className="flex justify-start flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0 ml-5">
 					<button
 						onClick={handle_login}

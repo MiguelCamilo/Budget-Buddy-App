@@ -3,7 +3,6 @@ import { MdSavings, MdForum } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { Avatar } from "flowbite-react";
 
-
 // google auth
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
