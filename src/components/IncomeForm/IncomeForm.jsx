@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import IncomeFormList from "./IncomeFormList";
 import BeatLoader from "react-spinners/BeatLoader";
-import { ScrollReveal } from "reveal-on-scroll-react";
 
 
 import { Chart as ChartJS } from "chart.js";
@@ -89,7 +88,7 @@ export default function IncomeForm() {
 
 	return (
 		<>
-			<ScrollReveal.div threshold={0} delay={2.5} animation="fade-in" className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+			<div threshold={0} delay={2.5} animation="fade-in" className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
 				<div className="flex items-center justify-between mb-4">
 					<div className="flex-shrink-0">
 						<h3 className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
@@ -161,9 +160,9 @@ export default function IncomeForm() {
 						))
 					)}
 				</section>
-			</ScrollReveal.div>
+			</div>
 
-			<ScrollReveal.div threshold={0} delay={3} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+			<div threshold={0} delay={3} animation="fade-in" className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
 				<div className="mb-4 flex items-center justify-between">
 					<div>
 						<h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -200,7 +199,7 @@ export default function IncomeForm() {
 						</div>
 					</div>
 				</div>
-			</ScrollReveal.div>
+			</div>
 		</>
 	);
 }
