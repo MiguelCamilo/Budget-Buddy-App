@@ -24,6 +24,8 @@ export default function LoginCard() {
 		toast.success("Successfully Logged In");
 	};
 
+
+
 	return (
 		<div className="flex h-screen bg-white rounded-r-xl">
 			<div className="flex flex-wrap w-[400px] flex-col justify-start py-9 px-6 pt-0 mt-10">

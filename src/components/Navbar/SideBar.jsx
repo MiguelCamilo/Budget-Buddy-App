@@ -78,11 +78,15 @@ export default function Sidebar() {
 								/>
 							)}
 						</div>
-						{user && user.displayName && (
+						{user ?
 							<p className="flex justify-center font-bold mt-3">
 								Welcome, {user.displayName}!
 							</p>
-						)}
+							: 
+							<p className="flex justify-center font-bold mt-3">
+								Welcome!
+							</p>
+						}
 						<div className="text-base text-gray-900 font-normal rounded-lg flex justify-center mx-8 items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-2xl duration-300">
 							<FiLogOut className="text-2xl text-red-600" />
 							<button

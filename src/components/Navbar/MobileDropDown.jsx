@@ -28,9 +28,10 @@ export default function MobileDropDown() {
 		<>
 			<Dropdown label="Menu" color="green" dismissOnClick={true}>
 				<Dropdown.Header>
-					{user && user.displayName && (
+					{user ?
 						<span className="text-sm">{user.displayName}</span>
-					)}
+						: <span className="text-sm">Welcome!</span>
+					}
 				</Dropdown.Header>
 				<Link to="/dashboard" className="flex flex-row">
 					<Dropdown.Item>
