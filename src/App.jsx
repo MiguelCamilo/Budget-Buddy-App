@@ -17,7 +17,8 @@ export const auth = getAuth(app);
 export const AuthContext = createContext();
 
 function App() {
-	const [user, setUser] = useState();
+	const [user, setUser] = useState(false);
+	const [isUser, setIsUser] = useState(true);
 
 	return (
 		<AuthContext.Provider value={{ user, setUser }}>
