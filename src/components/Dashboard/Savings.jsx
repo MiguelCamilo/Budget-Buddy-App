@@ -118,7 +118,7 @@ export default function Savings() {
 									</p>
 								) : (
 									savings.map((item) => (
-										<ScrollReveal.div threshold={0} animation="slide-in-bottom" >
+										<ScrollReveal.div key={item._id} threshold={0} animation="slide-in-bottom" >
 											<SavingsCard
 											key={item._id}
 											data={item}

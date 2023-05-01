@@ -2,25 +2,24 @@ import { Dropdown } from "flowbite-react";
 import { FiLogOut } from "react-icons/fi";
 import { HiChartPie } from "react-icons/hi";
 import { MdSavings, MdForum } from "react-icons/md";
+import { toast } from "react-toastify";
 
 // google auth
-import { signOut } from "firebase/auth";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { auth } from "../../App";
+import { UserAuth } from '../../context/AuthContext';
 
 export default function MobileDropDown() {
 	let navigate = useNavigate();
-	const user = auth.currentUser;
+	const { googleSignOut, user } = UserAuth();
 
-	const logout = async () => {
+	const handleSignOut = async () => {
 		try {
-			await signOut(auth);
-			toast.success("Successfully Logged Out");
-			navigate("/");
+			await googleSignOut();
+			toast.success('Sign out successful');
+			navigate('/');
 		} catch (err) {
-			toast.error(err);
+			console.error(err);
 		}
 	};
 
@@ -28,8 +27,8 @@ export default function MobileDropDown() {
 		<>
 			<Dropdown label="Menu" color="green" dismissOnClick={true}>
 				<Dropdown.Header>
-					{user && user.displayName && (
-						<span className="text-sm">{user.displayName}</span>
+					{user && (
+						<span className="text-sm">{user?.displayName}</span>
 					)}
 				</Dropdown.Header>
 				<Link to="/dashboard" className="flex flex-row">
@@ -51,7 +50,7 @@ export default function MobileDropDown() {
 					</Dropdown.Item>
 				</Link>
 				<Dropdown.Divider />
-				<Dropdown.Item onClick={() => logout()}>
+				<Dropdown.Item onClick={handleSignOut}>
 					<FiLogOut className="mr-1 text-red-600" />
 					<p className="text-red-600">Sign Out</p>
 				</Dropdown.Item>

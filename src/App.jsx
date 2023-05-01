@@ -1,36 +1,45 @@
-import { useState, createContext } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginCard from "./components/LoginCard/LoginCard";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Savings from "./components/Dashboard/Savings";
-import Community from "./components/Dashboard/Community";
-import "./assets/App.css";
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-// google auth
-import { getAuth } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "./firebase.config";
-
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-
-export const AuthContext = createContext();
+import LoginCard from './components/LoginCard/LoginCard';
+import Dashboard from './components/Dashboard/Dashboard';
+import Savings from './components/Dashboard/Savings';
+import Community from './components/Dashboard/Community';
+import { AuthContextProvider } from './context/AuthContext';
+import Protected from './context/Protected';
+import './assets/App.css';
 
 function App() {
-	const [user, setUser] = useState(false);
-	const [isUser, setIsUser] = useState(true);
-
 	return (
-		<AuthContext.Provider value={{ user, setUser }}>
-		<BrowserRouter>
+		<AuthContextProvider>
 			<Routes>
-				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="/community" element={<Community />} />
-				<Route path="/savings" element={<Savings />} />
+				<Route
+					path="/dashboard"
+					element={
+						<Protected>
+							<Dashboard />
+						</Protected>
+					}
+				/>
+				<Route
+					path="/community"
+					element={
+						<Protected>
+							<Community />
+						</Protected>
+					}
+				/>
+				<Route
+					path="/savings"
+					element={
+						<Protected>
+							<Savings />
+						</Protected>
+					}
+				/>
 				<Route exact path="/" element={<LoginCard />} />
 			</Routes>
-		</BrowserRouter>
-		</AuthContext.Provider>
+		</AuthContextProvider>
 	);
 }
 

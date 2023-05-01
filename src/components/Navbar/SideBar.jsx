@@ -2,27 +2,28 @@ import { HiChartPie } from "react-icons/hi"
 import { MdSavings, MdForum } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { Avatar } from "flowbite-react";
+import { toast } from "react-toastify";
 
 // google auth
-import { signOut } from "firebase/auth";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { auth } from "../../App";
+import { UserAuth } from "../../context/AuthContext";
+
 
 export default function Sidebar() {
 	let navigate = useNavigate();
-	const user = auth.currentUser;
+	const { googleSignOut, user } = UserAuth()
 
-	const logout = async () => {
+	const handleSignOut = async () => {
 		try {
-			await signOut(auth);
-			toast.success("Successfully Logged Out");
-			navigate("/");
-		} catch (err) {
-			toast.error(err);
+			await googleSignOut()
+			toast.success('Successfully signed out')
+			navigate('/')
 		}
-	};
+		catch(err) {
+			console.error(err)
+		}
+	}
 
 	return (
 		<aside
@@ -68,7 +69,7 @@ export default function Sidebar() {
 					<div>
 						<div className="flex justify-center mb-5">
 							{/* an expression is used to make sure that user.photoURL property is truthy */}
-							{user && user.photoURL && (
+							{user && user?.photoURL && (
 								<Avatar
 									img={user.photoURL}
 									size="lg"
@@ -78,15 +79,15 @@ export default function Sidebar() {
 								/>
 							)}
 						</div>
-						{user && user.displayName && (
+						{user &&
 							<p className="flex justify-center font-bold mt-3">
-								Welcome, {user.displayName}!
+								Welcome, {user?.displayName}!
 							</p>
-						)}
+						}
 						<div className="text-base text-gray-900 font-normal rounded-lg flex justify-center mx-8 items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-2xl duration-300">
 							<FiLogOut className="text-2xl text-red-600" />
 							<button
-								onClick={() => logout()}
+								onClick={handleSignOut}
 								className="ml-3 text-red-600 font-bold"
 							>
 								Sign Out
