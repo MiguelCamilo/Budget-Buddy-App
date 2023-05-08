@@ -5,7 +5,7 @@ Budget Buddy is a web app designed to help you track your expenses and manage yo
 
 ## Demo
 
-budget-buddy-app.web.app
+[![DEMO](https://budget-buddy-app.web.app)
 
 
 ## Installation
