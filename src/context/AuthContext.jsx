@@ -13,7 +13,7 @@ import { auth, provider } from '../firebase.config';
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState(null);
 
 	const googleSignIn = () => {
 		signInWithPopup(auth, provider);
