@@ -3,8 +3,9 @@ import { useContext, createContext } from 'react';
 
 // google auth
 import {
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
 	signInWithPopup,
-	signInWithRedirect,
 	signOut,
 	onAuthStateChanged,
 } from 'firebase/auth';
@@ -36,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
 
     return (
 		<>
-			<AuthContext.Provider value={{ googleSignIn, googleSignOut, user }}>
+			<AuthContext.Provider value={{ googleSignIn, googleSignOut, user, setUser }}>
                 { children }
             </AuthContext.Provider>
 		</>

@@ -6,7 +6,6 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import IncomeForm from "../IncomeForm/IncomeForm";
-import MiddleBarChart from "../ChartJS/MiddleBarChart";
 
 export default function Dashboard() {
 	return (
@@ -19,8 +18,7 @@ export default function Dashboard() {
 						<div className="pt-6 px-4">
 							<div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
 								<ExpenseForm />
-							</div>
-							<MiddleBarChart />
+							</div>							
 							<div className="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
 								<IncomeForm />
 							</div>

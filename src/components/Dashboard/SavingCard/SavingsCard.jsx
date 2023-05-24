@@ -83,7 +83,7 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 							<button
 								type="submit"
 								disabled={progress >= 100}
-								className="flex justify-center marker:px-8 w-[10%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#00D884] rounded-md hover:bg-green-400 focus:outline-none drop-shadow-xl"
+								className="flex justify-center marker:px-8 w-[10%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#46b563] rounded-md hover:bg-green-400 focus:outline-none drop-shadow-xl"
 							>
 								<GiPiggyBank />
 							</button>
@@ -92,7 +92,7 @@ export default function SavingsCard({ data, title, new_goal, setSavings }) {
 					{/* progress bar */}
 					<div className="w-full bg-neutral-200 mt-5">
 						<div
-							className="bg-[#00D884] p-2 text-center text-xs font-medium leading-none text-primary-100"
+							className="bg-[#46b563] p-2 text-center text-xs font-medium leading-none text-primary-100"
 							style={{ width: `${progress}%` }}
 						>
 							{/* 25% */}

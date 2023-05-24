@@ -134,7 +134,7 @@ export default function IncomeForm() {
 						</div>
 						<button
 							type="submit"
-							className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#00D884] rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
+							className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#46b563] rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
 						>
 							+
 						</button>

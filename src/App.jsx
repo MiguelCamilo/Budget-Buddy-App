@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import LoginCard from './components/LoginCard/LoginCard';
+import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import Savings from './components/Dashboard/Savings';
 import Community from './components/Dashboard/Community';
@@ -37,6 +38,7 @@ function App() {
 					}
 				/>
 				<Route exact path="/" element={<LoginCard />} />
+				<Route exact path="/register" element={<Register />} />
 			</Routes>
 		</AuthContextProvider>
 	);

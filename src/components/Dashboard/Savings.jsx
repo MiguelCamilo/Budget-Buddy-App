@@ -99,7 +99,7 @@ export default function Savings() {
 										<div className="flex justify-center mt-6">
 											<button
 												type="submit"
-												className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#00D884] rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
+												className="px-8 w-[80%] py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#46b563] rounded-md hover:bg-green-500 focus:outline-none drop-shadow-xl"
 											>
 												Create
 											</button>
