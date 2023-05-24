@@ -42,14 +42,30 @@ export default function Register() {
 			});
 		} catch (error) {
 			console.log(error);
+			switch (error.code) {
+				case "auth/invalid-email":
+					toast.error("Incorrect Email or Password.");
+					break;
+				case "auth/email-already-in-use":
+					toast.error(
+						"Account already in use."
+					);
+					break;
+				case "auth/weak-password":
+					toast.error(
+						"Password must be 6 characters or more."
+					);
+					break;
+				default:
+					toast.error("An undefined error occurred.");
+			}
 		}
 	};
 
 	// checks if user is logged in
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser);
-			console.log("User: ", currentUser);
+			setUser(currentUser);			
 		});
 		return () => {
 			unsubscribe();

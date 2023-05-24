@@ -23,7 +23,7 @@ export default function LoginCard() {
 		try {
 			await googleSignIn();
 		} catch (err) {
-			toast.error(err);
+			console.error(err);
 		}
 	};
 
@@ -36,8 +36,30 @@ export default function LoginCard() {
 		try {
 			const promise = await signInWithEmailAndPassword(auth, email, password);
 			return promise;
-		} catch (err) {
-			console.error(err);
+		} catch (error) {
+			console.error(error);
+			switch (error.code) {
+				case "auth/invalid-email":
+					toast.error("Incorrect Email or Password.");
+					break;
+				case "auth/user-not-found":
+					toast.error(
+						"Account does not exist or already in use."
+					);
+					break;
+				case "auth/wrong-password":
+					toast.error(
+						"Password is invalid."
+					);
+					break;
+				case "auth/user-disabled":
+					toast.error(
+						"The user account has been disabled by an administrator."
+					);
+					break;
+				default:
+					toast.error("An undefined error occurred.");
+			}
 		}
 	};
 
@@ -45,7 +67,6 @@ export default function LoginCard() {
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
-			console.log("User: ", currentUser);
 		});
 		return () => {
 			unsubscribe();
