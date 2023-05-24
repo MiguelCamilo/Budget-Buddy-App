@@ -158,7 +158,7 @@ export default function LoginCard() {
 
 							<div className="mt-6">
 								<button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gradient rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 hover:opacity-90">
-									Sign In
+									Login
 								</button>
 							</div>
 						</form>
