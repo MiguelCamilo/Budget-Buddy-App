@@ -31,11 +31,6 @@ export default function Navbar() {
 
 	const { googleSignOut, user } = UserAuth();
 
-
-const toggleModal = () => {
-	setIsOpen(!isOpen)
-}
-
 	return (
 		<nav className="bg-white border-b border-gray-200 fixed z-30 w-full">
 			<div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -70,18 +65,19 @@ const toggleModal = () => {
 									>
 										<span className="sr-only">Open user menu</span>
 										<img
-											onClick={toggleModal}
-											className="w-8 h-8 rounded-full"
+											onClick={() => setIsOpen(!isOpen)}
+											className="w-8 h-8 z-10 rounded-full"
 											src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
 											alt="user photo"
 										/>
 									</button>
-									{isOpen && (
-										<>
+								</div>
+								{isOpen && (
+										<div className="absolute top-44 right-0 bottom-0 flex items-center justify-center">
 											{/* Dropdown menu */}
 											<div
 												id="dropdownAvatar"
-												className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+												className="bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
 											>
 												<div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
 													<div>Bonnie Green</div>
@@ -127,17 +123,16 @@ const toggleModal = () => {
 													</a>
 												</div>
 											</div>
-										</>
+										</div>
 									)}
-								</div>
-							</div>
-						</div>
+							</div>							
+						</div>					
 						<a className="lg:hidden sm:inline-flex ml-5 text-black hover:bg-gray-100 font-medium rounded-lg text-3xl p-2 text-center items-center mr-3">
 							{/* drop down menu */}
 							<MobileDropDown />
 						</a>
 					</div>
-				</div>
+				</div>				
 			</div>
 		</nav>
 	);
