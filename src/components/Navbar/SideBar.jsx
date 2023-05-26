@@ -67,9 +67,9 @@ export default function Sidebar() {
 						<div className="space-y-2 pt-2"></div>
 					</div>
 					<div>
-						<div className="flex justify-center mb-5">
+						{/* <div className="flex justify-center mb-5"> */}
 							{/* an expression is used to make sure that user.photoURL property is truthy */}
-							{user && user?.photoURL && (
+							{/* {user && user?.photoURL && (
 								<Avatar
 									img={user.photoURL}
 									size="lg"
@@ -77,8 +77,8 @@ export default function Sidebar() {
 									alt="Profile Picture"
 									className="rounded-3xl"
 								/>
-							)}
-						</div>
+							)} */}
+						{/* </div> */}
 						{user &&
 							<p className="flex justify-center font-bold mt-3">
 								Welcome, {user?.displayName}!
