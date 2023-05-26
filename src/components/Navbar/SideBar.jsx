@@ -1,7 +1,6 @@
 import { HiChartPie } from "react-icons/hi"
 import { MdSavings, MdForum } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
-import { Avatar } from "flowbite-react";
 import { toast } from "react-toastify";
 
 // google auth
@@ -12,7 +11,7 @@ import { UserAuth } from "../../context/AuthContext";
 
 export default function Sidebar() {
 	let navigate = useNavigate();
-	const { googleSignOut, user } = UserAuth()
+	const { googleSignOut } = UserAuth()
 
 	const handleSignOut = async () => {
 		try {
@@ -79,20 +78,19 @@ export default function Sidebar() {
 								/>
 							)} */}
 						{/* </div> */}
-						{user &&
+						{/* {user &&
 							<p className="flex justify-center font-bold mt-3">
 								Welcome, {user?.displayName}!
 							</p>
-						}
-						<div className="text-base text-gray-900 font-normal rounded-lg flex justify-center mx-8 items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-2xl duration-300">
-							<FiLogOut className="text-2xl text-red-600" />
-							<button
+						} */}
+						{/* <div className="text-base text-gray-900 font-normal rounded-lg flex justify-center mx-8 items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-2xl duration-300">							 */}
+							{/* <button
 								onClick={handleSignOut}
 								className="ml-3 text-red-600 font-bold"
 							>
 								Sign Out
-							</button>
-						</div>
+							</button> */}
+						{/* </div> */}
 					</div>
 				</div>
 			</div>

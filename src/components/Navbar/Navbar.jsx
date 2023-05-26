@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import savings from "/src/assets/images/savings.png";
-import MobileDropDown from "./MobileDropDown";
 
 import { UserAuth } from "../../context/AuthContext";
 
@@ -31,6 +30,19 @@ export default function Navbar() {
 
 	const { googleSignOut, user } = UserAuth();
 
+	let navigate = useNavigate();
+
+	const handleSignOut = async () => {
+		try {
+			await googleSignOut()
+			toast.success('Successfully signed out')
+			navigate('/')
+		}
+		catch(err) {
+			console.error(err)
+		}
+	}
+
 	return (
 		<nav className="bg-white border-b border-gray-200 fixed z-30 w-full">
 			<div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -53,7 +65,7 @@ export default function Navbar() {
 					</div>
 
 					<div className="flex items-center">
-						<div className="hidden lg:flex items-center">
+						<div className="flex items-center">
 							<div className="-mb-2">
 								<div>
 									{/* <FiSettings className="text-2xl hover:text-gray-500 hover:-translate-x-0.5 hover:-translate-y-0.5 duration-300" /> */}
@@ -67,7 +79,7 @@ export default function Navbar() {
 										<img
 											onClick={() => setIsOpen(!isOpen)}
 											className="w-8 h-8 z-10 rounded-full"
-											src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
+											src={user?.photoUrl}
 											alt="user photo"
 										/>
 									</button>
@@ -79,8 +91,10 @@ export default function Navbar() {
 												id="dropdownAvatar"
 												className="bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
 											>
-												<div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-													<div>Bonnie Green</div>
+												<div className="px-4 py-3 text-sm text-gray-900 dark:text-white cursor-default">
+													{user && 
+														<p>{user?.displayName}</p>
+													}
 													<div className="font-medium truncate">
 														name@flowbite.com
 													</div>
@@ -115,22 +129,18 @@ export default function Navbar() {
 													</li>
 												</ul>
 												<div className="py-2">
-													<a
-														href="#"
-														className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+													<button
+														onClick={handleSignOut}
+														className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
 													>
 														Sign out
-													</a>
+													</button>
 												</div>
 											</div>
 										</div>
 									)}
 							</div>							
-						</div>					
-						<a className="lg:hidden sm:inline-flex ml-5 text-black hover:bg-gray-100 font-medium rounded-lg text-3xl p-2 text-center items-center mr-3">
-							{/* drop down menu */}
-							<MobileDropDown />
-						</a>
+						</div>
 					</div>
 				</div>				
 			</div>
