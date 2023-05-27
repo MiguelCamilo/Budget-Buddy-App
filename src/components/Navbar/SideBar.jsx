@@ -11,7 +11,7 @@ import { UserAuth } from "../../context/AuthContext";
 
 export default function Sidebar() {
 	let navigate = useNavigate();
-	const { googleSignOut } = UserAuth()
+	const { googleSignOut, user } = UserAuth()
 
 	const handleSignOut = async () => {
 		try {
