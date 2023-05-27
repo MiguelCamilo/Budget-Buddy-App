@@ -1,28 +1,12 @@
 import { HiChartPie } from "react-icons/hi"
 import { MdSavings, MdForum } from "react-icons/md";
-import { FiLogOut } from "react-icons/fi";
-import { toast } from "react-toastify";
-
-// google auth
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+
 
 
 export default function Sidebar() {
 	let navigate = useNavigate();
-	const { googleSignOut, user } = UserAuth()
-
-	const handleSignOut = async () => {
-		try {
-			await googleSignOut()
-			toast.success('Successfully signed out')
-			navigate('/')
-		}
-		catch(err) {
-			console.error(err)
-		}
-	}
 
 	return (
 		<aside
@@ -66,31 +50,6 @@ export default function Sidebar() {
 						<div className="space-y-2 pt-2"></div>
 					</div>
 					<div>
-						{/* <div className="flex justify-center mb-5"> */}
-							{/* an expression is used to make sure that user.photoURL property is truthy */}
-							{/* {user && user?.photoURL && (
-								<Avatar
-									img={user.photoURL}
-									size="lg"
-									status="online"
-									alt="Profile Picture"
-									className="rounded-3xl"
-								/>
-							)} */}
-						{/* </div> */}
-						{/* {user &&
-							<p className="flex justify-center font-bold mt-3">
-								Welcome, {user?.displayName}!
-							</p>
-						} */}
-						{/* <div className="text-base text-gray-900 font-normal rounded-lg flex justify-center mx-8 items-center p-2 group hover:-translate-x-0.5 hover:-translate-y-0.5 hover:drop-shadow-2xl duration-300">							 */}
-							{/* <button
-								onClick={handleSignOut}
-								className="ml-3 text-red-600 font-bold"
-							>
-								Sign Out
-							</button> */}
-						{/* </div> */}
 					</div>
 				</div>
 			</div>
