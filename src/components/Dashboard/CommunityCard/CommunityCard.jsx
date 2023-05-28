@@ -6,7 +6,7 @@ import { BiDownvote } from "react-icons/bi";
 
 import { UserAuth } from "../../../context/AuthContext";
 
-export default function CommunityCard({ title, info, data }) {
+export default function CommunityCard({ title, info, data, timestamp }) {
 	const { _id } = data
 	const { user } = UserAuth()
 
@@ -23,10 +23,10 @@ export default function CommunityCard({ title, info, data }) {
 		localStorage.setItem(`count-${_id}`, count)
 	},[count, _id])
 
-	const date = new Date();
-	const month = date.getMonth() + 1;
-	const year = date.getFullYear();
-	const day = date.getDate() + 1;
+	// const date = 
+	// const month = date.getMonth() + 1;
+	// const year = date.getFullYear();
+	// const day = date.getDate() + 1;
 
 	return (
 		<>
@@ -51,7 +51,7 @@ export default function CommunityCard({ title, info, data }) {
 								{title}
 							</label>
 							<label className="text-gray-500">
-								posted on: {month}/{day}/{year}
+								posted on: {timestamp}
 							</label>
 						</div>
 						<p className="mb-5 text-base text-gray-500 dark:text-gray-400 sm:text-lg">

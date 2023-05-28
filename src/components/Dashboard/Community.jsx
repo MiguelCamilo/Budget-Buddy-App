@@ -12,11 +12,12 @@ export default function Community() {
 	const [title, setTitle] = useState("");
 	const [info, setInfo] = useState("");
 	const [post, setPost] = useState();
+	const timestamp = new Date()
 
 	const handle_add_post = (e) => {
 		e.preventDefault();
 
-		const post = { title, info };
+		const post = { title, info, timestamp };
 		fetch(`https://api-budget-buddy.web.app/forum`, {
 			method: "POST",
 			headers: {
@@ -111,6 +112,7 @@ export default function Community() {
 											data={data}
 											title={data.title}
 											info={data.info}
+											timestamp={data.timestamp}
 										/>
 									</ScrollReveal.div>
 								))
