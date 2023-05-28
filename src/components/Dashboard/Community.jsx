@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Label, TextInput, Textarea } from "flowbite-react";
+
+import BeatLoader from "react-spinners/BeatLoader";
 import { toast } from "react-toastify";
 import { ScrollReveal } from "reveal-on-scroll-react";
-import BeatLoader from "react-spinners/BeatLoader";
+import { Label, TextInput, Textarea } from "flowbite-react";
 
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
@@ -12,11 +13,13 @@ export default function Community() {
 	const [title, setTitle] = useState("");
 	const [info, setInfo] = useState("");
 	const [post, setPost] = useState();
+	
 	const timestamp = new Date()
+	timestamp.toDateString()
 
 	const handle_add_post = (e) => {
 		e.preventDefault();
-
+		
 		const post = { title, info, timestamp };
 		fetch(`https://api-budget-buddy.web.app/forum`, {
 			method: "POST",

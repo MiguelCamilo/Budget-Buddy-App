@@ -74,7 +74,7 @@ export default function Navbar() {
 										{user && (
 											<img
 											onClick={() => setIsOpen(!isOpen)}
-											className="h-12 w-12 rounded-full"
+											className="h-10 w-10 rounded-full"
 											src={user?.photoURL}											
 										/>
 										)}
