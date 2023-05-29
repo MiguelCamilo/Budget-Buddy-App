@@ -5,19 +5,16 @@ import { Card } from "flowbite-react";
 import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 
-import { UserAuth } from "../../../context/AuthContext";
-
-export default function CommunityCard({ title, info, data, timestamp }) {
+export default function CommunityCard({ title, info, data, timestamp, user }) {
 	const { _id } = data
-	const { user } = UserAuth()
 
-	const formattedTimestamp = moment(timestamp).format('l');
-
-	const [count, setCount] = useState(() => {
+	const [count, setCount] = useState(() => {	
 		// Number is needed, without localStorage returns undefined
 		return Number(localStorage.getItem(`count-${_id}`)) || 0
 	})
 
+	const formattedTimestamp = moment(timestamp).format('l');
+	
 	const handle_votes = (e) => {
 		setCount(e)
 	}
@@ -61,14 +58,7 @@ export default function CommunityCard({ title, info, data, timestamp }) {
 							{user && (
 								<p className="font-medium pr-2">{user?.displayName}</p>
 							)}
-							{user && (
-								<img
-									src={user?.photoURL}
-									alt=""
-									className="rounded-full h-8 w-8"
-								/>
-							)}
-						</h2>
+						</h2>					
 					</Card>
 				</div>
 			</div>

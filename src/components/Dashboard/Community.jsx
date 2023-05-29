@@ -9,18 +9,27 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
 import CommunityCard from "./CommunityCard/CommunityCard";
 
+import { UserAuth } from "../../context/AuthContext";
+
 export default function Community() {
 	const [title, setTitle] = useState("");
 	const [info, setInfo] = useState("");
 	const [post, setPost] = useState();
+
+	const { user } = UserAuth()
+	const userId = user
 	
 	const timestamp = new Date()
 	timestamp.toDateString()
 
 	const handle_add_post = (e) => {
 		e.preventDefault();
+
+		if(!title || !info) {
+			return toast.error("Please fill out required fields.")
+		}
 		
-		const post = { title, info, timestamp };
+		const post = { title, info, timestamp, userId };
 		fetch(`https://api-budget-buddy.web.app/forum`, {
 			method: "POST",
 			headers: {
@@ -39,7 +48,7 @@ export default function Community() {
 	};
 
 	useEffect(() => {
-		fetch(`https://api-budget-buddy.web.app/forum`)
+		fetch(`http://127.0.0.1:5002/forum`)
 			.then((res) => res.json())
 			.then(setPost)
 			.catch((err) => toast.error(err));
@@ -116,6 +125,7 @@ export default function Community() {
 											title={data.title}
 											info={data.info}
 											timestamp={data.timestamp}
+											user={data.userId}
 										/>
 									</ScrollReveal.div>
 								))
