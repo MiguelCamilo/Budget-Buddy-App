@@ -48,7 +48,7 @@ export default function Community() {
 	};
 
 	useEffect(() => {
-		fetch(`http://127.0.0.1:5002/forum`)
+		fetch(`https://api-budget-buddy.web.app/forum`)
 			.then((res) => res.json())
 			.then(setPost)
 			.catch((err) => toast.error(err));
